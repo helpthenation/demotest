@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="housing_loan_view_from">
+            <field name="name">housing loan form</field>
+            <field name="model">housing.loan</field>
+            <field name="arch" type="xml">
+                <form string="Housing Loan">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="employee_name" options="{'no_create': True}"/>
+                                <field name="employee_id"/>
+                                <field name="job_title_id"
+                                       options="{'no_create': True, 'no_open': True,'no_edit': True}"/>
+                                <field name="department_id"
+                                       options="{'no_create': True, 'no_open': True,'no_edit': True}"/>
+                                <field name="utility_bill"/>
+                                <field name="tenancy_contract_file"/>
+                                <field name="security_cheque"/>
+
+
+                            </group>
+                            <group>
+                                <field name="currency_id" invisible="1"
+                                       options="{'no_create': True, 'no_open': True,'no_edit': True}"/>
+                                <field name="grade_id" options="{'no_create': True, 'no_open': True,'no_edit': True}"/>
+                                <field name="date_of_join"/>
+                                <field name="monthly_housing_allowance" widget='monetary'
+                                       options="{'currency_field': 'currency_id'}"/>
+                                <field name="yearly_housing_allowance" widget='monetary'
+                                       options="{'currency_field': 'currency_id'}"/>
+                                <field name="effective_month_year" force_save="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Payment" name="housing_loan_payment">
+                                <group string="Payment">
+                                    <group>
+                                        <field name="loan_amount" widget='monetary'
+                                               options="{'currency_field': 'currency_id'}"/>
+                                        <field name="mode_of_payment" widget="radio"/>
+                                        <field name="remarks"/>
+                                        <field name="current_account_number"
+                                               attrs="{'invisible':[('mode_of_payment','!=','Bank Transfer to Salary Account')]}"/>
+                                        <field name="current_bank_name"
+                                               attrs="{'invisible':[('mode_of_payment','!=','Bank Transfer to Salary Account')]}"/>
+                                        <field name="current_iban"
+                                               attrs="{'invisible':[('mode_of_payment','!=','Bank Transfer to Salary Account')]}"/>
+
+                                    </group>
+                                    <group>
+                                        <field name="rental_period" widget="radio"/>
+                                    </group>
+                                </group>
+                                <group string="Tenancy Contract">
+                                    <group>
+                                        <field name="tenancy_contract" widget="radio"/>
+                                        <field name="rental_amount" widget='monetary'
+                                               options="{'currency_field': 'currency_id'}"/>
+
+                                    </group>
+                                    <group string="Tenancy Period">
+                                        <field name="tenancy_contract_start_date"/>
+                                        <field name="tenancy_contract_end_date"/>
+                                    </group>
+                                </group>
+                                <group string="Address in UAE">
+                                    <group>
+                                        <field name="emirate_id"
+                                               options="{'no_create': True, 'no_open': True,'no_edit': True}"/>
+                                        <field name="town"/>
+                                        <field name="street"/>
+                                        <field name="flat_vila_no"/>
+                                    </group>
+                                    <group>
+                                        <field name="build_no"/>
+                                        <field name="tel_no"/>
+                                        <field name="mobile_no"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                        <group>
+                            <field name="payment_plans_ids" readonly="1">
+                                <tree editable="0" create="0" delete="0">
+                                    <field name="pay_year"/>
+                                    <field name="pay_month"/>
+                                    <field name="start_date"/>
+                                    <field name="end_date"/>
+                                    <field name="loan_balance"/>
+                                    <field name="payment"/>
+                                    <field name="loan_repayment"/>
+                                    <field name="reg_repayment"/>
+                                </tree>
+                            </field>
+
+                        </group>
+                        <!--                        <group>-->
+                        <!--                            <group>-->
+                        <!--                                <field name="signature" widget="signature"/>-->
+                        <!--                            </group>-->
+                        <!--                            <group>-->
+                        <!--                                <field name="sign_date"/>-->
+                        <!--                            </group>-->
+                        <!--                        </group>-->
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="housing_loan_tree_view" model="ir.ui.view">
+            <field name="name">housing.loan.tree</field>
+            <field name="model">housing.loan</field>
+            <field name="arch" type="xml">
+                <tree string="Housing Loan" edit="0" delete="0" create="0">
+                    <field name="employee_name"/>
+                    <field name="employee_id"/>
+                    <field name="job_title_id"/>
+                    <field name="department_id"/>
+                    <field name="grade_id"/>
+                    <field name="date_of_join"/>
+                    <field name="monthly_housing_allowance"/>
+                    <field name="yearly_housing_allowance" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="housing_loan_menu_act_window" model="ir.actions.act_window">
+            <field name="name">Housing Loan History</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">housing.loan</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Housing Loan History" id="housing_loan_menuitem"
+                  parent="hr.menu_hr_employee_payroll" sequence="10" groups="security_groups.group_company_hc"
+                  action="housing_loan_menu_act_window"/>
+    </data>
+</odoo>

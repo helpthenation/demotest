@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+ <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.signalr.integration</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="100"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="SignalR Settings" string="SignalR Connection Settings" data-key="signalr_coneection" id="signalr">
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box" >
+                            <div class="o_setting_right_pane">
+                                <label for="auth_url"/>
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <field name="auth_url"/>
+                                    </div>
+                                </div>
+                                 <label for="auth_password"/>
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <field name="auth_password"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label for="auth_user_name"/>
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <field name="auth_user_name"  class="col-lg-5"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr/>
+                    <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box" >
+                                <div class="o_setting_right_pane">
+                                    <button name="get_auth_token" string="Get Auth Token" type="object"/>
+                                    <br/>
+                                    <label for="auth_token"/>
+                                    <div class="content-group">
+                                        <div class="mt16">
+                                            <field name="auth_token"/>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                     <hr/>
+<!--                    <div class="row mt16 o_settings_container">-->
+<!--                            <div class="col-12 col-lg-6 o_setting_box" >-->
+<!--                                <div class="o_setting_right_pane">-->
+<!--                                    <label for="base_url"/>-->
+<!--                                    <div class="content-group">-->
+<!--                                        <div class="mt16">-->
+<!--                                            <field name="base_url"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-12 col-lg-6 o_setting_box" >-->
+<!--                                <div class="o_setting_right_pane">-->
+<!--                                    <label for="url_params"/>-->
+<!--                                    <div class="content-group">-->
+<!--                                        <div class="mt16">-->
+<!--                                            <field name="url_params"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="o_setting_right_pane">-->
+<!--                                <button class="oe_highlight" name="run_integrate" string="Integrate" type="object"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    <hr/>-->
+<!--                    <div class="row mt16 o_settings_container">-->
+<!--                            <div class="col-12 col-lg-6 o_setting_box" >-->
+<!--                                    <label for="mfiles_result"/>-->
+<!--                                    <div class="content-group">-->
+<!--                                            <field name="mfiles_result"/>-->
+<!--                                    </div>-->
+<!--                            </div>-->
+<!--                    </div>-->
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

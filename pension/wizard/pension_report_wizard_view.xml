@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_pension_report_wizard_view_form" model="ir.ui.view">
+            <field name="name">hr.pension.report.wizard.form</field>
+            <field name="model">hr.pension.report.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Pension Report">
+                    <group class="oe_title">
+                        <field name="country_id" required="1"/>
+                        <field name="month" required="1"/>
+                        <field name="year" required="1"/>
+                    </group>
+                    <footer>
+                        <button name="generate_pension_report" string="Generate Report" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_generate_hr_pension_report" model="ir.actions.act_window">
+            <field name="name">Pension Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.pension.report.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="hr_pension_report_wizard_view_form"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

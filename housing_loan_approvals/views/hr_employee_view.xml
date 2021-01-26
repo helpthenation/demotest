@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_employee_housing_loan_history_form" model="ir.ui.view">
+            <field name="name">hr.employee.housing.history.form.</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_document_custom.view_employee_form_custom"/>
+            <field name="arch" type="xml">
+                <page name="document_page" position="after">
+                    <page name="employee_housing_history" string="Employee Housing History" attrs="{'invisible': [('invisible_user_role','=',True)]}">
+                        <field name="housing_history_ids">
+                            <tree editable="0" create="0" delete="0">
+                                <field name="related_approval_hl" invisible="1"/>
+                                <field name="employee_name"/>
+                                <field name="employee_id"/>
+                                <field name="department_id" optional="show"/>
+                                <field name="date_of_join" optional="show"/>
+                                <field name="job_title_id" optional="show"/>
+                                <field name="grade_id" optional="show"/>
+                                <field name="monthly_housing_allowance"/>
+                                <field name="yearly_housing_allowance"/>
+                                <field name="loan_amount"/>
+                                <field name="mode_of_payment"/>
+                            </tree>
+                        </field>
+                    </page>
+                </page>
+            </field>
+        </record>
+    </data>
+</odoo>
+

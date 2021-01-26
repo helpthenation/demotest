@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+acess_hr_leave_type_approver,hr.leave.type.approver,model_hr_leave_type_approver,,1,1,1,1
+acess_hr_leave_approver,hr.leave.approver,model_hr_leave_approver,,1,1,1,1
+access_carried_forward_settings_user,hr_holidays_custom.access_carried_forward_settings_user,model_carried_forward_settings,,1,1,1,1
+
+

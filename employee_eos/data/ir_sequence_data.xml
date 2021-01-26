@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- Sequences for End of Service -->
+        <record id="seq_end_of_service" model="ir.sequence">
+            <field name="name">End Of Service</field>
+            <field name="code">end.of.service</field>
+            <field name="prefix">EOS</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Sequences for reference number -->
+        <record id="seq_reference_num" model="ir.sequence">
+            <field name="name">Reference Number</field>
+            <field name="code">end.of.service.reference</field>
+            <field name="prefix"></field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

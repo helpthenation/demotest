@@ -1,0 +1,3 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_housing_loan","housing.loan","model_housing_loan",,1,1,1,1
+"access_payment.plans","payment.plans","model_payment_plans",,1,1,1,1

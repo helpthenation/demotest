@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_attendance_processed,hr.attendance.processed,model_hr_attendance_processed,,1,1,1,1
+access_resource_calendar_variant,resource.calendar.variant,model_resource_calendar_variant,,1,1,1,1
+acess_hr_employee_shift,hr.employee.shift,model_hr_employee_shift,,1,1,1,1

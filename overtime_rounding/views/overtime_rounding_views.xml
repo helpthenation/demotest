@@ -1,0 +1,42 @@
+<odoo>
+    <data>
+<!--        <record model="ir.ui.view" id="view_overtime_rounding_form">-->
+<!--            <field name="name">overtime.rounding.form</field>-->
+<!--            <field name="model">overtime.rounding</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <form string="Overtime Rounding">-->
+<!--                    <sheet>-->
+<!--                        <group>-->
+<!--                            <group>-->
+<!--                                <field name="from_minute" widget='float_time'/>-->
+<!--                                <field name="to_minute" widget='float_time'/>-->
+<!--                                <field name="rounded_off" widget='float_time' readonly="False"/>-->
+<!--                            </group>-->
+<!--                        </group>-->
+<!--                    </sheet>-->
+<!--                </form>-->
+<!--            </field>-->
+<!--        </record>-->
+        <record id="view_overtime_rounding_tree" model="ir.ui.view">
+            <field name="name">overtime.rounding.tree</field>
+            <field name="model">overtime.rounding</field>
+            <field name="arch" type="xml">
+                <tree string="Overtime Rounding" editable="bottom" >
+                    <field name="from_minute" widget='float_time'/>
+                    <field name="to_minute" widget='float_time'/>
+                    <field name="rounded_off" widget='float_time' readonly="False"/>
+                </tree>
+            </field>
+        </record>
+        <record id="overtime_rounding_action" model="ir.actions.act_window">
+            <field name="name">Overtime Rounding</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">overtime.rounding</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_hr_overtime_rounding_view" name="Overtime Rounding"
+                  parent="hr_payroll.menu_hr_salary_configuration" sequence="40"
+                  action="overtime_rounding_action"/>
+    </data>
+</odoo>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="hr_leave_allocation_inherit_view_form_for_date_range" model="ir.ui.view">
+            <field name="name">hr.leave.allocation.inherit.view.form.for.date.range</field>
+            <field name="model">hr.leave.allocation</field>
+            <field name="inherit_id" ref="hr_holidays.hr_leave_allocation_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='notes']" position="before">
+                    <group>
+                        <group attrs="{ 'invisible': [('allocation_type','=','accrual')]}">
+                            <label for="allocation_from_date" string="Valid From"/>
+                            <div>
+                                <div class="o_row o_row_readonly o_hr_holidays_dates">
+                                    <field name="allocation_from_date" class="oe_inline"
+                                           attrs="{'readonly': [('state', 'not in', ('draft', 'confirm'))],
+                                           'invisible': [('allocation_type','=','accrual')]}"
+                                           required="0"/>
+                                    <span class="oe_inline">
+                                        To
+                                    </span>
+                                    <field name="allocation_to_date" class="oe_inline"
+                                           attrs="{
+                                        'readonly': [('state', 'not in', ('draft', 'confirm'))],
+                                         'invisible': [('allocation_type','=','accrual')]
+                                    }" required="0"/>
+                                </div>
+                            </div>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="hr_leave_allocation_inherit_view_form" model="ir.ui.view">
+            <field name="name">hr.leave.allocation.inherit.view.form</field>
+            <field name="model">hr.leave.allocation</field>
+            <field name="inherit_id" ref="hr_holidays.hr_leave_allocation_view_form_manager"/>
+            <field name="arch" type="xml">
+                <!-- add by bhavesh jadav-->
+                <xpath expr="//field[@name='allocation_type']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//header" position="inside">
+                    <button type="object" class="btn" string="Set Expired"
+                            name="action_expired"
+                            attrs="{'invisible': [('state', 'not in', ['validate'])]}"/>
+                </xpath>
+                <xpath expr="//field[@name='employee_id']" position="after">
+                    <field name="grade_id" groups="hr_holidays.group_hr_holidays_user"
+                           attrs="{'required': [('holiday_type', '=', 'grade')], 'invisible': [('holiday_type', 'not in', ['grade','multiple_criteria'])]}"/>
+                    <field name="employee_ids" groups="hr_holidays.group_hr_holidays_user" widget="many2many_tags"
+                           attrs="{'required': [('holiday_type', '=', 'employees')], 'invisible': [('holiday_type', '!=', 'employees')]}"/>
+                    <field name="contract_group" attrs="{'invisible': [('holiday_type', '!=', 'multiple_criteria')]}"/>
+                    <field name="contract_subgroup"
+                           attrs="{'invisible': [('holiday_type', '!=', 'multiple_criteria')]}"/>
+                    <field name="country_id" attrs="{'invisible': [('holiday_type', '!=', 'multiple_criteria')]}"/>
+                    <field name="gender" attrs="{'invisible': [('holiday_type', '!=', 'multiple_criteria')]}"/>
+                    <field name="religion" attrs="{'invisible': [('holiday_type', '!=', 'multiple_criteria')]}"/>
+                    <field name="encash_leave"/>
+                    <field name="is_carry_forward" readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

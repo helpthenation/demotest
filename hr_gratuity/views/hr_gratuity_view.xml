@@ -1,0 +1,64 @@
+<odoo>
+    <data>
+
+        <!--form view for the gratuity-->
+        <record id="hr_gratuity_form_view" model="ir.ui.view">
+            <field name="name">hr.gratuity.form</field>
+            <field name="model">hr.gratuity</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" readonly="1"/>
+                                <field name="contract_type" required="1"/>
+                                <field name="from_year"/>
+                                <field name="to_year"/>
+                                <field name="number_of_years" required="1"/>
+                                <field name="number_of_days"/>
+                                <field name="multiplier"/>
+                                <field name="reason"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree view for the gratuity-->
+        <record id="hr_gratuity_tree_view" model="ir.ui.view">
+            <field name="name">hr.gratuity.tree</field>
+            <field name="model">hr.gratuity</field>
+            <field name="arch" type="xml">
+                <tree> <!--editable="bottom"-->
+                    <field name="name" readonly="1" optional="show"/>
+                    <field name="contract_type" optional="show"/>
+                    <field name="reason" optional="show"/>
+                    <field name="from_year" optional="show"/>
+                    <field name="to_year" optional="show"/>
+                    <field name="number_of_years" optional="show"/>
+                    <field name="multiplier" optional="show"/>
+                    <field name="number_of_days" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_gratuity_menu_action" model="ir.actions.act_window">
+            <field name="name">Gratuity</field>
+            <field name="res_model">hr.gratuity</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No new Gratuity
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="main_menu_hr_gratuity"
+                  name="Gratuity"
+                  action="hr_gratuity_menu_action"
+                  groups="security_groups.group_company_hc"
+                  parent="hr_payroll.menu_hr_salary_configuration"
+                  sequence="45"/>
+    </data>
+</odoo>

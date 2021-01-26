@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="hr_carry_forward_leave_and_encasement" model="ir.cron">
+            <field name="state">code</field>
+            <field name="code" eval="'model.leave_encasement_and_carry_forward()'"/>
+            <field name="name">Hr Leave Carry Forward and Encasement</field>
+            <field name="numbercall">-1</field>
+            <field name="priority">5</field>
+            <field name="doall">True</field>
+            <field name="interval_type">days</field>
+            <field name="interval_number">1</field>
+            <field name="model_id" ref="model_hr_leave_allocation"/>
+            <field name="active">True</field>
+            <field name="nextcall"
+                   eval="(DateTime.now().replace(hour=17, minute=59, month=12, day=31)).strftime('%Y-%m-%d %H:%M:%S')"/>
+
+        </record>
+    </data>
+</odoo>

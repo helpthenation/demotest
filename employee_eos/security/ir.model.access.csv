@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_end_of_service_user,employee_eos.access_end_of_service_user,model_end_of_service,,1,1,1,1
+access_eos_request_settings_user,employee_eos.eos_request_settings,model_eos_request_settings,,1,1,1,1
+access_eos_request_approver_user,employee_eos.eos_request_approver,model_eos_request_approver,,1,1,1,1
+access_eos_approval_sequence_user,employee_eos.eos_approval_sequence,model_eos_approval_sequence,,1,1,1,1
+

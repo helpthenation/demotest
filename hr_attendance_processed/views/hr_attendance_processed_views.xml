@@ -1,0 +1,194 @@
+<odoo>
+    <data>
+        <record id="view_hr_attendance_inherit_tree" model="ir.ui.view">
+            <field name="name">hr.attendance.inherit.tree</field>
+            <field name="model">hr.attendance</field>
+            <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
+            <!--            <field name="groups_id" eval="[(4, ref('hr_attendance.group_hr_attendance_user'))]"/>-->
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='worked_hours']" position="after">
+                    <field name="processed"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="hr_attendance_inherit_view_form" model="ir.ui.view">
+            <field name="name">hr.attendance.inherit.form</field>
+            <field name="model">hr.attendance</field>
+            <field name="inherit_id" ref="hr_attendance.hr_attendance_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='check_out']" position="after">
+                    <field name="processed"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_hr_attendance_processed_form">
+            <field name="name">hr.attendance.processed.form</field>
+            <field name="model">hr.attendance.processed</field>
+            <field name="arch" type="xml">
+                <form string="Attendance Processed">
+                    <header class="modal-header">
+                        <field name="day_status" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group string="Employee Details">
+                            <group>
+                                <field name="employee"/>
+                                <field name="company_employee_id"/>
+                                <field name="emp_grade" options="{'no_open': True}"/>
+                                <field name="line_manager" options="{'no_open': True}"/>
+                                <field name="line_manager_company_id"/>
+                                <field name="nationality" options="{'no_open': True}"/>
+                            </group>
+                            <group>
+                                <field name="group" options="{'no_open': True}"/>
+                                <field name="department" options="{'no_open': True}"/>
+                                <field name="section" options="{'no_open': True}"/>
+                                <field name="sub_section" options="{'no_open': True}"/>
+                                <field name="job_title" options="{'no_open': True}"/>
+                                <field name="company_name" options="{'no_open': True}"/>
+                            </group>
+                        </group>
+                        <group string="Shift Details">
+                            <group>
+                                <field name="date"/>
+                                <field name="weekday"/>
+                                <field name="shift"/>
+                                <field name="variant"/>
+                                <field name="first_in" widget='float_time'/>
+                                <field name="last_out" widget='float_time'/>
+                            </group>
+                            <group>
+                                <field name="total_work_hours" widget='float_time'/>
+                                <field name="early_leave" widget='float_time'/>
+                                <field name="late_leave" widget='float_time'/>
+                                <field name="mid_shift" widget='float_time'/>
+                                <field name="early_coming" widget='float_time'/>
+                                <field name="late_coming" widget='float_time'/>
+                            </group>
+                        </group>
+                        <group string="Login Details">
+                            <group>
+                                <field name="in_1" widget='float_time'/>
+                                <field name="out_1" widget='float_time'/>
+                                <field name="in_2" widget='float_time'/>
+                                <field name="out_2" widget='float_time'/>
+                            </group>
+                            <group>
+                                <field name="in_3" widget='float_time'/>
+                                <field name="out_3" widget='float_time'/>
+                                <field name="in_4" widget='float_time'/>
+                                <field name="out_4" widget='float_time'/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_hr_attendance_processed_tree" model="ir.ui.view">
+            <field name="name">hr.attendance.processed.tree</field>
+            <field name="model">hr.attendance.processed</field>
+            <field name="arch" type="xml">
+                <tree string="Attendance Processed" create='1' edit="1" delete="1">
+                    <field name="employee"/>
+                    <field name="company_employee_id"/>
+                    <field name="date"/>
+                    <field name="weekday"/>
+                    <field name="emp_grade"/>
+                    <field name="shift"/>
+                    <field name="variant"/>
+                    <field name="first_in" widget='float_time'/>
+                    <field name="last_out" widget='float_time'/>
+                    <field name="total_work_hours" widget='float_time'/>
+                    <field name="day_status"/>
+                    <field name="early_coming" widget='float_time'/>
+                    <field name="late_coming" widget='float_time'/>
+                    <field name="early_leave" widget='float_time'/>
+                    <field name="late_leave" widget='float_time'/>
+                    <field name="mid_shift" widget='float_time'/>
+                    <field name="in_1" widget='float_time'/>
+                    <field name="out_1" widget='float_time'/>
+                    <field name="in_2" widget='float_time'/>
+                    <field name="out_2" widget='float_time'/>
+                    <field name="in_3" widget='float_time'/>
+                    <field name="out_3" widget='float_time'/>
+                    <field name="in_4" widget='float_time'/>
+                    <field name="out_4" widget='float_time'/>
+                    <field name="line_manager"/>
+                    <field name="line_manager_company_id"/>
+                    <field name="nationality"/>
+                    <field name="group"/>
+                    <field name="department"/>
+                    <field name="section"/>
+                    <field name="sub_section"/>
+                    <field name="job_title"/>
+                    <field name="company_name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="hr_attendance_processed_view_filter" model="ir.ui.view">
+            <field name="name">hr_attendance_processed_view_filter</field>
+            <field name="model">hr.attendance.processed</field>
+            <field name="arch" type="xml">
+                <search string="Hr Attendance Processed Search">
+                    <group expand="0" string="Group By">
+                        <filter string="Employee" name="employee" context="{'group_by': 'employee'}"/>
+                        <filter string="day" name="groupby_check_in" context="{'group_by': 'date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="hr_attendance_processed_pivot_view" model="ir.ui.view">
+            <field name="name">hr.attendance.processed.pivot</field>
+            <field name="model">hr.attendance.processed</field>
+            <field name="arch" type="xml">
+                <pivot string="Attendances" display_quantity="true">
+                    <field name="employee" type="row"/>
+                    <field name="date" type="row"/>
+                    <field name="weekday" type="row"/>
+                </pivot>
+            </field>
+        </record>
+        <record id="view_hr_attendance_process_kanban" model="ir.ui.view">
+            <field name="name">hr.attendance.process.kanban</field>
+            <field name="model">hr.attendance.processed</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <field name="employee"/>
+                    <field name="date"/>
+                    <field name="weekday"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="row mb4">
+                                    <strong class="col-6">
+                                        <field name="employee"/>
+                                    </strong>
+                                    <strong class="col-6 text-right">
+                                        <i class="fa fa-clock-o" aria-label="Date" role="img" title="Date"/><field name="date"/>
+                                    </strong>
+                                    <div class="col-10">
+                                        <field name="weekday"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+        <record id="hr_attendance_process_action" model="ir.actions.act_window">
+            <field name="name">Attendances Process</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.attendance.processed</field>
+            <field name="view_mode">tree,form,pivot,kanban</field>
+        </record>
+
+        <menuitem id="menu_hr_attendance_processed_view" name="Attendances Processed"
+                  parent="hr_attendance.menu_hr_attendance_manage_attendances" sequence="10"
+                  groups="hr_attendance.group_hr_attendance_manager" action="hr_attendance_process_action"/>
+    </data>
+</odoo>

@@ -1,0 +1,108 @@
+<odoo>
+    <data>
+        <record id="approval_request_view_form_inherit_for_salary_advance" model="ir.ui.view">
+            <field name="name">approval.request.view.form.salary.advance</field>
+            <field name="model">approval.request</field>
+            <field name="inherit_id" ref="hr_approvals.approval_request_view_form_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/header" position="inside">
+                    <button name="action_print_report_salary"
+                            string="Print Salary Report"
+                            type="object"
+                            attrs="{'invisible':['|',('is_salary_advance','=','no'),('request_status','not in',['pending','under_approval','approved','refused'])]}"/>
+                    <button name="create_advance_salary_history" string="Create Advance Salary" type="object"
+                            groups="hr_approvals.group_approval_category_manager_advance_salary"
+                            attrs="{'invisible':['|','|',['can_create_advance_salary_history','==',False],['all_approved','==',False], ['advance_salary_history_ids','!=',[]]]}"
+                            class="btn-primary"/>
+                </xpath>
+
+                <xpath expr="//field[@name='transfer_reason']" position="after">
+                    <!-- Attrs fields-->
+                    <field name="is_salary_advance" invisible="1"/>
+                    <field name="has_employee" invisible="1"/>
+                    <field name="has_system_id" invisible="1"/>
+                    <field name="has_job_title_sl" invisible="1"/>
+                    <field name="has_job_grade" invisible="1"/>
+                    <field name="has_total_monthly_salary" invisible="1"/>
+                    <field name="has_request_year" invisible="1"/>
+                    <field name="has_request_month" invisible="1"/>
+                    <field name="has_request_amount" invisible="1"/>
+                    <field name="has_salary_advance_reason" invisible="1"/>
+                    <field name="has_salary_advance_ref" invisible="1"/>
+                    <field name="currency_id" invisible="1"/>
+                    <!--                    <field name="has_approved_amount" invisible="1"/>-->
+                    <!--                    <field name="has_approved_year" invisible="1"/>-->
+                    <!--                    <field name="has_approved_month" invisible="1"/>-->
+                    <field name="advance_salary_history_ids" invisible="1"/>
+                    <field name="can_create_advance_salary_history" invisible="1"/>
+                    <field name="all_approved" invisible="1"/>
+
+
+                    <!--                    <field name="has_company_id" invisible="1"/>-->
+
+
+                    <!-- Request Form fields-->
+                    <field name="salary_advance_ref" readonly="1"
+                           attrs="{'invisible':[('has_salary_advance_ref','==','no')],
+                           'required': [('has_salary_advance_ref','==','required')]}"/>
+                    <field name="salary_employee_id" string="Employee Name"
+                           options="{'no_create': True, 'no_open': True,'no_edit': True}"
+                           attrs="{'invisible':[('has_employee','==','no')],
+                           'readonly':[('request_status','not in',['new'])],
+                           'required': [('has_employee','==','required')]}"/>
+                    <field name="system_id"
+                           attrs="{'invisible':[('has_system_id','==','no')],
+                           'required': [('has_system_id','==','required')]}"/>
+                    <field name="job_title_sl"
+                           options="{'no_create': True, 'no_open': True,'no_edit': True}"
+                           attrs="{'invisible':[('has_job_title_sl','==','no')],
+                           'required': [('has_job_title_sl','==','required')]}"/>
+                    <field name="job_grade"
+                           options="{'no_create': True, 'no_open': True,'no_edit': True}"
+                           attrs="{'invisible':[('has_job_grade','==','no')],
+                           'required': [('has_job_grade','==','required')]}"/>
+                    <field name="total_monthly_salary" widget="monetary" options="{'currency_field': 'currency_id'}"
+                           attrs="{'invisible':[('has_total_monthly_salary','==','no')],
+                           'required': [('has_total_monthly_salary','==','required')]}"/>
+                    <div class="o_address_format">
+                    </div>
+                    <field name="request_year" string="Select Request Year"
+                           attrs="{'invisible':[('has_request_year','==','no')],
+                           'readonly':[('request_status','not in',['new'])],
+                           'required': [('has_request_year','==','required')]}"/>
+                    <field name="request_month" string="Select Request Month"
+                           attrs="{'invisible':[('has_request_month','==','no')],
+                           'readonly':[('request_status','not in',['new'])],
+                           'required': [('has_request_month','==','required')]}"/>
+                    <field name="request_amount" string="Enter advance salary amount" widget="monetary"
+                           options="{'currency_field': 'currency_id'}"
+                           attrs="{'invisible':[('has_request_amount','==','no')],
+                           'readonly':[('request_status','not in',['new'])],
+                           'required': [('has_request_amount','==','required')]}"/>
+                    <field name="salary_advance_reason" string="Request Reason"
+                           attrs="{'invisible':[('has_salary_advance_reason','==','no')],
+                           'readonly':[('request_status','not in',['new'])],
+                           'required': [('has_salary_advance_reason','==','required')]}"/>
+                    <field name="recovery_month" string="Recovery Month"
+                           attrs="{'invisible':[('has_salary_advance_reason','==','no')]}" readonly="1"/>
+
+                    <!--                    <field name="approved_amount" string="Enter Approved Amount" widget="monetary"-->
+                    <!--                           options="{'currency_field': 'currency_id'}" force_save="1"-->
+                    <!--                           attrs="{'invisible':[('has_approved_amount','==','no')],-->
+                    <!--                           'required': [('has_approved_amount','==','required')],-->
+                    <!--                           'readonly':[('user_status','not in',['pending'])]}"/>-->
+                    <!--                    <field name="approved_month" string="Approved Month" force_save="1"-->
+                    <!--                           attrs="{'invisible':['|',('has_approved_month','==','no')],-->
+                    <!--                           'required': [('has_approved_month','==','required')],-->
+                    <!--                           'readonly':[('user_status','not in',['pending'])]}"/>-->
+                    <!--                    <field name="approved_year" string="Approved Year" force_save="1"-->
+                    <!--                           attrs="{'invisible':['|',('has_approved_year','==','no')],-->
+                    <!--                           'required': [('has_approved_year','==','required')],-->
+                    <!--                           'readonly':[('user_status','not in',['pending'])]}"/>-->
+                    <!--attrs="{'invisible':[('can_create_advance_salary_history','=',False),('all_approved','=',False),('advance_salary_history_ids','=',False)]}"-->
+
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

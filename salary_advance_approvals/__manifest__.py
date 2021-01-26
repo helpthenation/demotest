@@ -1,0 +1,30 @@
+# -*- coding: utf-8 -*-
+
+{
+    'name': 'Salary Advance Approvals',
+    'description': 'Salary Advance Approvals',
+    'version': '1.1.10',
+    'summary': 'The employee can create a new request in approval for the advance salary with some condition and with '
+               'all approval users',
+    'license': 'OPL-1',
+    'author': 'TechUltra Solutions Pvt. Ltd.',
+    'website': 'https://www.techultrasolutions.com/',
+    'images': [],
+    'category': 'uncategorized',
+    'description': """ Salary Advance Approvals""",
+    'depends': ['hr_approvals', 'hr_employee_custom', 'base', 'security_groups', 'res_company_custom', 'hr_payroll'],
+    'data': ['security/ir.model.access.csv',
+             'data/approval_category_data.xml',
+             'data/ir_sequence_data.xml',
+             'data/advance_salary_data.xml',
+             'data/advance_salary_rule.xml',
+             'views/approval_category_view.xml',
+             'views/approval_request_view.xml',
+             'views/salary_advance_settings_view.xml',
+             'views/hr_employee_view.xml',
+             'views/salary_advance_history_view.xml',
+             'reports/reports.xml',
+             'reports/report_template.xml',
+             ],
+    'auto_install': False,
+}

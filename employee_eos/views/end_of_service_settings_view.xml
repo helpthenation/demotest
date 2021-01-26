@@ -1,0 +1,65 @@
+<odoo>
+    <data>
+        <!-- Tree view for the eos request settings -->
+        <record id="eos_request_settings_tree_view" model="ir.ui.view">
+            <field name="name">eos.request.settings.tree</field>
+            <field name="model">eos.request.settings</field>
+            <field name="arch" type="xml">
+                <tree edit="false">
+                    <field name="name" optional="show"/>
+                    <field name="approval_minimum" optional="hide"/>
+                    <field name="approver_ids" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!-- form view for the eos request settings -->
+        <record model="ir.ui.view" id="eos_request_settings_form_view">
+            <field name="name">eos.request.settings.form</field>
+            <field name="model">eos.request.settings</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h2>
+                                <field name="name" required="1"/>
+                            </h2>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="approval_minimum"/>
+                                <field name="approval_sequence"
+                                       options="{'no_create': True, 'no_edit': True,'no_open': True}">
+                                    <tree editable="bottom">
+                                        <field name="sequence" invisible="1" widget="handle"/>
+                                        <field name="sequence"/>
+                                        <field name="user_id"/>
+                                        <field name="approval_category"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Menu action for the eos Request settings -->
+        <record id="eos_request_settings_act_window" model="ir.actions.act_window">
+            <field name="name">EOS Approver(s) Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">eos.request.settings</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Child Menu for the education Request Settings-->
+        <menuitem id="child_menu_eos_request_settings"
+                  name="EOS Approver(s) Settings"
+                  parent="approvals.approvals_menu_config"
+                  action="eos_request_settings_act_window"
+                  groups="security_groups.group_company_hc"
+                  sequence="14"/>
+    </data>
+</odoo>

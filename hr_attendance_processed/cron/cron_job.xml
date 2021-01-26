@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="hr_attendance_processed" model="ir.cron">
+            <field name="state">code</field>
+            <field name="code" eval="'model.calculate_work()'"/>
+            <field name="name">Hr Attendance Processed</field>
+            <field name="numbercall">-1</field>
+            <field name="priority">5</field>
+            <field name="doall">True</field>
+            <field name="interval_type">days</field>
+            <field name="interval_number">1</field>
+            <field name="model_id" ref="model_hr_attendance_processed"/>
+            <field name="active">True</field>
+        </record>
+
+        <record id="create_planning_slot" model="ir.cron">
+            <field name="state">code</field>
+            <field name="code" eval="'model.create_planning_slot_rec()'"/>
+            <field name="name">Create Planning Slot Records</field>
+            <field name="numbercall">-1</field>
+            <field name="priority">5</field>
+            <field name="doall">True</field>
+            <field name="interval_type">weeks</field>
+            <field name="nextcall"
+                   eval="(DateTime.now().replace(day=28)+relativedelta(months=1)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="interval_number">1</field>
+            <field name="model_id" ref="model_planning_slot"/>
+            <field name="active">True</field>
+        </record>
+    </data>
+</odoo>

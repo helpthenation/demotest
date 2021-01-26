@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data noupdate="1">
+        <record model="carried.forward.settings" id="res_carried_forward_settings_record_1">
+            <field name="name">Carried Forward Setting For All Employee</field>
+            <field name="apply_for_all_employee">True</field>
+            <field name="carry_forward">specific_number</field>
+            <field name="num_of_leave_for_carry_forward">10</field>
+            <field name="encashment_percentage">50</field>
+        </record>
+    </data>
+</odoo>

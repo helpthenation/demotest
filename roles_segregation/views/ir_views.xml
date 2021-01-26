@@ -1,0 +1,55 @@
+<odoo>
+    <data>
+
+        <!-- inherit for the show page event page of group_hc_compensation_and_benefits user-->
+        <record id="view_employee_form_custom_for_show_event" model="ir.ui.view">
+            <field name="name">hr.employee.form.custom.for.show.event</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_employee_custom.view_employee_form_custom"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='events']" position="attributes">
+                    <attribute name="groups">
+                        security_groups.group_hc_employee,
+                        roles_segregation.group_hc_compensation_and_benefits,
+                        roles_segregation.group_hc_employee_relations,
+                        roles_segregation.group_hc_general_service,
+                        roles_segregation.group_hc_organizational_developments,
+                        roles_segregation.group_hc_manager,
+                        roles_segregation.group_ceo
+                    </attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+        <!-- inherit for the show trial_period page for the group_hc_employee_relations group-->
+        <record id="hr_contract_view_form_for_show_probation_assessment" model="ir.ui.view">
+            <field name="name">hr.contract.form</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract_custom.hr_contract_job_offer_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='trial_period']" position="attributes">
+                    <attribute name="groups">
+                        security_groups.group_hc_employee,
+                        roles_segregation.group_hc_employee_relations
+                    </attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+        <!-- inherit for the add group in next appraisal smart button -->
+        <record id="hr_contract_view_form_for_appraisal_date" model="ir.ui.view">
+            <field name="name">hr.employee.view.form.inherit.appraisal.group</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_appraisal.hr_employee_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div/button[2]" position="attributes">
+                    <attribute name="groups">
+                        security_groups.group_company_hc
+                    </attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

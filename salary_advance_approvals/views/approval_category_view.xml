@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+
+        <record id="approval_category_view_form_inherit_advance_salary" model="ir.ui.view">
+            <field name="name">approval.category.view.form.advance.salary</field>
+            <field name="model">approval.category</field>
+            <field name="inherit_id" ref="approvals.approval_category_view_form"/>
+            <field name="arch" type="xml">
+<!--                <xpath expr="//field[@name='description']" position="after">-->
+<!--                    <field name="is_salary_advance" widget="radio" options="{'horizontal': true}"/>-->
+<!--                </xpath>-->
+
+                <xpath expr="//form/sheet/notebook/page[@name='transfer_fields']" position="after">
+                    <page name="advance_salary" string="Advance Salary">
+                        <label for="is_salary_advance"/>
+                        <field name="is_salary_advance" widget="radio" options="{'horizontal': true}"/>
+                        <h3 style="text-decoration: underline;" colspan="2">Fields</h3>
+                        <group>
+                            <!--                                <field name="has_company_id" widget="radio" options="{'horizontal': true}"/>-->
+                            <field name="has_employee" widget="radio" options="{'horizontal': true}"/>
+                            <field name="has_system_id" widget="radio" options="{'horizontal': true}"/>
+                            <field name="has_job_title_sl" widget="radio" options="{'horizontal': true}"/>
+                            <field name="has_job_grade" widget="radio" options="{'horizontal': true}"/>
+                            <field name="has_total_monthly_salary" widget="radio" options="{'horizontal': true}"/>
+                            <field name="has_request_year" widget="radio" options="{'horizontal': true}"/>
+                            <field name="has_request_month" widget="radio" options="{'horizontal': true}"/>
+                            <field name="has_request_amount" widget="radio" options="{'horizontal': true}"/>
+                            <field name="has_salary_advance_ref" widget="radio" options="{'horizontal': true}"/>
+                            <field name="has_salary_advance_reason" widget="radio" options="{'horizontal': true}"/>
+<!--                            <field name="has_approved_amount" widget="radio" options="{'horizontal': true}"/>-->
+<!--                            <field name="has_approved_month" widget="radio" options="{'horizontal': true}"/>-->
+<!--                            <field name="has_approved_year" widget="radio" options="{'horizontal': true}"/>-->
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

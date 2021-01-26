@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_employee_form_custom_advance_salary" model="ir.ui.view">
+        <field name="name">hr.employee.form.advance.salary</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr_employee_custom.view_employee_form_custom"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='dependent']" position="before">
+                <page name="advance_salary_history" string="Advance Salary History" attrs="{'invisible': [('invisible_user_role','=',True)]}">
+                    <field name="advance_salary_history_ids">
+                        <tree editable="0" create="0" delete="0">
+                            <field name="advance_salary_request_id" optional="hide"/>
+                            <field name="salary_advance_ref" optional="show"/>
+                            <field name="salary_employee_id" optional="show"/>
+                            <field name="system_id" optional="hide"/>
+                            <field name="job_title" optional="hide"/>
+                            <field name="job_grade" optional="hide"/>
+                            <field name="request_amount" optional="show"/>
+                            <field name="request_month" optional="show"/>
+                            <field name="request_year" optional="show"/>
+<!--                            <field name="approved_amount" optional="show"/>-->
+<!--                            <field name="approved_month" optional="show"/>-->
+<!--                            <field name="approved_year" optional="show"/>-->
+                            <field name="total_monthly_salary" optional="hide"/>
+                            <field name="salary_advance_reason" optional="hide"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

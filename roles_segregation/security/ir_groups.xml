@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="group_hc_compensation_and_benefits" model="res.groups">
+            <field name="name">HC -C&amp;B(Compensation &amp; Benefits)</field>
+            <field name="category_id" ref="security_groups.module_category_company"/>
+            <field name="implied_ids" eval="[(6, 0, [ref('hr.group_hr_user')])]"/>
+            <!-- here we need to add group_hr_user(employee/officer) other wiser if we open employee menu its gives
+            js error because of the contract warring sign need to access the contract record -->
+        </record>
+
+        <record id="group_hc_employee_relations" model="res.groups">
+            <field name="name">HC -ER (Employee Relations)</field>
+            <field name="category_id" ref="security_groups.module_category_company"/>
+            <field name="implied_ids" eval="[(6, 0, [ref('hr.group_hr_user')])]"/>
+            <!-- here we need to add group_hr_user(employee/officer) other wiser if we open employee menu its gives
+            js error because of the contract warring sign need to access the contract record -->
+        </record>
+
+        <record id="group_hc_general_service" model="res.groups">
+            <field name="name">HC -GS (General Service)</field>
+            <field name="category_id" ref="security_groups.module_category_company"/>
+            <field name="implied_ids" eval="[(6, 0, [ref('documents.group_documents_user'),ref('hr.group_hr_user')])]"/>
+        </record>
+
+        <record id="group_hc_recruitment" model="res.groups">
+            <field name="name">HC -Recruitment</field>
+            <field name="category_id" ref="security_groups.module_category_company"/>
+            <field name="implied_ids" eval="[(6, 0, [ref('hr.group_hr_user')])]"/>
+        </record>
+
+        <record id="group_hc_organizational_developments" model="res.groups">
+            <field name="name">HC -OD (Organizational Developments)</field>
+            <field name="category_id" ref="security_groups.module_category_company"/>
+            <field name="implied_ids" eval="[(6, 0, [ref('hr.group_hr_user')])]"/>
+        </record>
+
+        <record id="group_hc_manager" model="res.groups">
+            <field name="name">HC Manager</field>
+            <field name="category_id" ref="security_groups.module_category_company"/>
+            <field name="implied_ids" eval="[(6, 0, [ref('hr.group_hr_user')])]"/>
+        </record>
+
+        <record id="group_ceo" model="res.groups">
+            <field name="name">CEO</field>
+            <field name="category_id" ref="security_groups.module_category_company"/>
+            <field name="implied_ids" eval="[(6, 0, [ref('hr.group_hr_user')])]"/>
+        </record>
+
+        <record id="group_it_admin" model="res.groups">
+            <field name="name">IT Admin</field>
+            <field name="category_id" ref="security_groups.module_category_company"/>
+            <field name="implied_ids"
+                   eval="[(6, 0, [ref('website.group_website_publisher'),ref('hr.group_hr_user'),ref('base.group_system')])]"/>
+        </record>
+
+
+<!--        <record id="group_employee_role" model="res.groups">-->
+<!--            <field name="name">Employee Role</field>-->
+<!--            <field name="category_id" ref="security_groups.module_category_company"/>-->
+<!--            &lt;!&ndash;            <field name="implied_ids"&ndash;&gt;-->
+<!--            &lt;!&ndash;                   eval="[(6, 0, [ref('website.group_website_publisher'),ref('hr.group_hr_user'),ref('base.group_system')])]"/>&ndash;&gt;-->
+<!--        </record>-->
+
+
+<!--        <record id="group_manager_role" model="res.groups">-->
+        <!--            <field name="name">Manager Role</field>-->
+        <!--            <field name="category_id" ref="security_groups.module_category_company"/>-->
+        <!--            &lt;!&ndash;            <field name="implied_ids" eval="[(6, 0, [ref('base.group_user')])]"/>&ndash;&gt;-->
+        <!--        </record>-->
+
+    </data>
+</odoo>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!--         allowance Salary Rule for the notice pay  -->
+        <!--        <record id="eos_notice_pay_rule_allowance" model="hr.salary.rule">-->
+        <!--            <field name="condition_select">python</field>-->
+        <!--            <field name="condition_python">-->
+        <!--                result =contract.env['hr.payslip'].notice_pay_rule_applicable_condition_allowance(payslip)-->
+        <!--            </field>-->
+        <!--            <field name="amount_select">code</field>-->
+        <!--            <field name="amount_python_compute">-->
+        <!--                result= contract.env['hr.payslip'].get_eos_notice_pay_amount_allowance(payslip)-->
+        <!--            </field>-->
+        <!--            <field name="code">EOSN</field>-->
+        <!--            <field name="category_id" ref="hr_payroll.ALW"/>-->
+        <!--            <field name="name">Notice Pay Allowance</field>-->
+        <!--            <field name="sequence" eval="5"/>-->
+        <!--            <field name="struct_id" ref="hr_payroll.structure_002"/>-->
+        <!--        </record>-->
+
+        <!-- allowance Salary Rule for the Gratuity Pay -->
+        <!--        <record id="eos_gratuity_pay_rule_allowance" model="hr.salary.rule">-->
+        <!--                    <field name="condition_select">python</field>-->
+        <!--                            <field name="condition_python">-->
+        <!--                                result =contract.env['hr.payslip'].gratuity_pay_rule_applicable_condition_allowance(payslip)-->
+        <!--                            </field>-->
+        <!--                    <field name="amount_select">code</field>-->
+        <!--                    <field name="amount_python_compute">-->
+        <!--                        result= contract.env['hr.payslip'].get_eos_gratuity_pay_amount_allowance(payslip)-->
+        <!--                    </field>-->
+        <!--                    <field name="code">EOSGP</field>-->
+        <!--                    <field name="category_id" ref="hr_payroll.ALW"/>-->
+        <!--                    <field name="name">Gratuity Pay Allowance</field>-->
+        <!--                    <field name="sequence" eval="5"/>-->
+        <!--                    <field name="struct_id" ref="hr_payroll.structure_002"/>-->
+        <!--                </record>-->
+
+        <!-- salary rule for the Encah leave -->
+<!--        <record id="eos_encash_leaves_rule" model="hr.salary.rule">-->
+        <!--            <field name="condition_select">python</field>-->
+        <!--            <field name="condition_python">-->
+        <!--                result =contract.env['hr.payslip'].gratuity_pay_rule_applicable_condition_allowance(payslip)-->
+        <!--            </field>-->
+        <!--            <field name="amount_select">code</field>-->
+        <!--            <field name="amount_python_compute">-->
+        <!--                result=contract.env['hr.payslip'].get_remain_leaves_encashment_amount(payslip)-->
+        <!--            </field>-->
+        <!--            <field name="code">EL</field>-->
+        <!--            <field name="appears_on_payslip">TRUE</field>-->
+        <!--            <field name="category_id" ref="hr_payroll.ALW"/>-->
+        <!--            <field name="name">Encash Leaves</field>-->
+        <!--            <field name="sequence" eval="5"/>-->
+        <!--            <field name="struct_id" ref="hr_payroll.structure_002"/>-->
+        <!--        </record>-->
+    </data>
+</odoo>
