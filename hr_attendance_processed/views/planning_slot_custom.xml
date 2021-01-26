@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="planning_slot_view_form_inherit" model="ir.ui.view">
+            <field name="name">planning.slot.form.inherit</field>
+            <field name="inherit_id" ref="planning.planning_view_form"/>
+            <field name="model">planning.slot</field>
+            <field name="arch" type="xml">
+                <field name="template_id" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+                <field name="role_id" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+                <field name="repeat" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+                <field name="template_creation" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+                <label for="template_creation" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </label>
+
+                <xpath expr="//field[@name='employee_id']" position="after">
+                    <field name="resource_calender"/>
+                    <field name="resource_calender_attendance" domain="[('calendar_id','=',[resource_calender])]"/>
+<!--                    <field name="resource_calender_variant"/>-->
+                </xpath>
+
+
+                <field name="start_datetime" position="attributes">
+                    <attribute name="widget">date</attribute>
+                    <attribute name="readonly">True</attribute>
+                    <attribute name="force_save">True</attribute>
+                </field>
+                <field name="end_datetime" position="attributes">
+                    <attribute name="widget">date</attribute>
+                    <attribute name="readonly">True</attribute>
+                    <attribute name="force_save">True</attribute>
+                </field>
+
+                <field name="end_datetime" position="after">
+                    <field string="Daily Shift" name="template_id"
+                           options="{'no_create': True, 'no_open': True,'no_edit': True}"/>
+                    <field name="starttime" readonly="1" force_save="1" widget="float_time"/>
+                    <field name="endtime" readonly="1" force_save="1" widget="float_time"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="planning_slot_view_tree_inherit" model="ir.ui.view">
+            <field name="name">planning.slot.inherit.tree</field>
+            <field name="model">planning.slot</field>
+            <field name="inherit_id" ref="planning.planning_view_tree"/>
+            <field name="arch" type="xml">
+                <field name="role_id" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </field>
+                <xpath expr="//field[@name='employee_id']" position="after">
+                    <field name="resource_calender"/>
+                    <field name="resource_calender_attendance"/>
+<!--                    <field name="resource_calender_variant"/>-->
+                </xpath>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="view_hr_employee_shift_form">
+            <field name="name">hr.employee.shift.form</field>
+            <field name="model">hr.employee.shift</field>
+            <field name="arch" type="xml">
+                <form string="Employee Shift">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="related_employee"/>
+                                <field name="resource_calender"/>
+                                <field name="resource_calender_attendance"/>
+                            </group>
+                            <group>
+<!--                                <field name="resource_calender_variant"/>-->
+                                <field name="active"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_hr_employee_shift_tree" model="ir.ui.view">
+            <field name="name">hr.employee.shift.tree</field>
+            <field name="model">hr.employee.shift</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Shift" create='1' delete="1">
+                    <field name="related_employee"/>
+                    <field name="resource_calender"/>
+                    <field name="resource_calender_attendance"/>
+<!--                    <field name="resource_calender_variant"/>-->
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_employee_shift_action" model="ir.actions.act_window">
+            <field name="name">Hr Employee Shift</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee.shift</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+<!--        <menuitem id="menu_hr_employee_shift_view" name="Employee Shift"-->
+<!--                  parent="hr_attendance.menu_hr_attendance_manage_attendances" sequence="10"-->
+<!--                  groups="hr_attendance.group_hr_attendance_manager" action="hr_employee_shift_action"/>-->
+
+    </data>
+</odoo>

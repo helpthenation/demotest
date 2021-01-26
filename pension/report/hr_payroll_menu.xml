@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<odoo>
+
+    <menuitem
+        id="menu_payroll_pension_report"
+        name="Pension Report"
+        parent="hr_payroll.menu_hr_payroll_report"
+        sequence="50"
+        action="pension.action_generate_hr_pension_report"
+        groups="hr_payroll.group_hr_payroll_user"/>
+
+
+</odoo>

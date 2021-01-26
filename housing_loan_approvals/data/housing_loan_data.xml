@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record model="approval.category" id="res_approval_category_housing_loan">
+            <field name="name">Housing Loan</field>
+            <field name="is_housing_loan_request">yes</field>
+            <field name="has_e_name">required</field>
+            <field name="has_employee_id">required</field>
+            <field name="has_job_title_id">required</field>
+            <field name="has_department_id">required</field>
+            <field name="has_grade_id">required</field>
+            <field name="has_date_of_join">required</field>
+            <field name="has_monthly_housing_allowance">required</field>
+            <field name="has_loan_amount">required</field>
+            <field name="has_mode_of_payment">required</field>
+            <field name="has_remarks">required</field>
+            <field name="has_currency_id">required</field>
+            <field name="has_rental_period">required</field>
+            <field name="has_tenancy_contract">required</field>
+            <field name="has_rental_amount">required</field>
+            <field name="has_tenancy_contract_start_date">required</field>
+            <field name="has_tenancy_contract_end_date">required</field>
+            <field name="has_emirate_id">required</field>
+            <field name="has_town">required</field>
+            <field name="has_street">required</field>
+            <field name="has_build_no">required</field>
+            <field name="has_flat_vila_no">required</field>
+            <field name="has_tel_no">required</field>
+            <field name="has_mobile_no">required</field>
+<!--            <field name="has_signature">required</field>-->
+<!--            <field name="has_sign_date">required</field>-->
+            <field name="has_utility_bill">required</field>
+            <field name="has_tenancy_contract_file">required</field>
+            <field name="has_security_cheque">required</field>
+            <field name="has_my_company">required</field>
+            <field name="image" type="base64" file="housing_loan_approvals/static/src/housing_loan.jpg"/>
+        </record>
+    </data>
+</odoo>

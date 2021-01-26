@@ -1,0 +1,66 @@
+<odoo>
+    <data>
+        <record id="view_res_country_airfare_region_form" model="ir.ui.view">
+            <field name="name">airfare.region.res.company.form</field>
+            <field name="model">res.country</field>
+            <field name="inherit_id" ref="base.view_country_form"/>
+            <field name="arch" type="xml">
+                <field name="vat_label" position="after">
+                    <field name="country_group_ids"/>
+                </field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_airfare_allowance_regions_form">
+            <field name="name">airfare.allowance.regions.form</field>
+            <field name="model">airfare.allowance.regions</field>
+            <field name="arch" type="xml">
+                <form string="Airfare  Allowance Regions">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="country_group_ids" widget='many2many_tags'/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Allowances">
+
+                                <field name="allowance">
+                                    <tree editable="bottom">
+                                        <field name="grade_ids" widget='many2many_tags'/>
+                                        <field name="type"/>
+                                        <field name="class_of_travel"/>
+                                        <field name="yearly_amount"/>
+                                        <field name="monthly_amount"/>
+                                    </tree>
+                                </field>
+                            </page>
+
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_airfare_allowance_regions_tree" model="ir.ui.view">
+            <field name="name">airfare.allowance.regions.tree</field>
+            <field name="model">airfare.allowance.regions</field>
+            <field name="arch" type="xml">
+                <tree string="Airfare Allowance Region">
+                    <field name="name"/>
+                    <field name="country_group_ids" widget='many2many_tags'/>
+                    <field name="allowance"/>
+                </tree>
+            </field>
+        </record>
+        <record id="airfare_allowance_regions_action" model="ir.actions.act_window">
+            <field name="name">Airfare Allowance Regions</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">airfare.allowance.regions</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_airfare_allowance_regions_action_view" name="Airfare Allowance Regions"
+                  parent="hr_payroll.menu_hr_salary_configuration" sequence="40"
+                  action="airfare_allowance_regions_action"/>
+    </data>
+</odoo>

@@ -1,0 +1,158 @@
+<odoo>
+    <data noupdate="1">
+        <record model="hr.gratuity" id="res_hr_gratuity_record_1">
+            <field name="contract_type">permanent</field>
+            <field name="from_year">1</field>
+            <field name="to_year">5</field>
+            <field name="number_of_years">1_to_5_years</field>
+            <field name="number_of_days">0</field>
+            <field name="multiplier">1</field>
+            <field name="reason"></field>
+        </record>
+        <record model="hr.gratuity" id="res_hr_gratuity_record_2">
+            <field name="contract_type">permanent</field>
+            <field name="from_year">6</field>
+            <field name="to_year">10</field>
+            <field name="number_of_years">6_to_10_years</field>
+            <field name="number_of_days">0</field>
+            <field name="multiplier">2</field>
+            <field name="reason"></field>
+        </record>
+        <record model="hr.gratuity" id="res_hr_gratuity_record_3">
+            <field name="contract_type">permanent</field>
+            <field name="from_year">10</field>
+            <field name="to_year">99</field>
+            <field name="number_of_years">above_10_years</field>
+            <field name="number_of_days">0</field>
+            <field name="multiplier">3</field>
+            <field name="reason"></field>
+        </record>
+
+        <record model="hr.gratuity" id="res_hr_gratuity_record_4">
+            <field name="contract_type">permanent</field>
+            <field name="from_year">1</field>
+            <field name="to_year">5</field>
+            <field name="number_of_years">months</field>
+            <field name="number_of_days">0</field>
+            <field name="multiplier">1</field>
+            <field name="reason"></field>
+        </record>
+        <record model="hr.gratuity" id="res_hr_gratuity_record_5">
+            <field name="contract_type">permanent</field>
+            <field name="from_year">6</field>
+            <field name="to_year">10</field>
+            <field name="number_of_years">months</field>
+            <field name="number_of_days">0</field>
+            <field name="multiplier">2</field>
+            <field name="reason"></field>
+        </record>
+        <record model="hr.gratuity" id="res_hr_gratuity_record_6">
+            <field name="contract_type">permanent</field>
+            <field name="from_year">10</field>
+            <field name="to_year">99</field>
+            <field name="number_of_years">months</field>
+            <field name="number_of_days">0</field>
+            <field name="multiplier">3</field>
+            <field name="reason"></field>
+        </record>
+        <record model="hr.gratuity" id="res_hr_gratuity_record_7">
+            <field name="contract_type">permanent</field>
+            <field name="from_year">1</field>
+            <field name="to_year">5</field>
+            <field name="number_of_years">days</field>
+            <field name="number_of_days">0</field>
+            <field name="multiplier">1</field>
+            <field name="reason"></field>
+        </record>
+        <record model="hr.gratuity" id="res_hr_gratuity_record_8">
+            <field name="contract_type">permanent</field>
+            <field name="from_year">6</field>
+            <field name="to_year">10</field>
+            <field name="number_of_years">days</field>
+            <field name="number_of_days">0</field>
+            <field name="multiplier">2</field>
+            <field name="reason"></field>
+        </record>
+        <record model="hr.gratuity" id="res_hr_gratuity_record_9">
+            <field name="contract_type">permanent</field>
+            <field name="from_year">10</field>
+            <field name="to_year">99</field>
+            <field name="number_of_years">days</field>
+            <field name="number_of_days">0</field>
+            <field name="multiplier">3</field>
+            <field name="reason"></field>
+        </record>
+        <record model="hr.gratuity" id="res_hr_gratuity_record_10">
+            <field name="contract_type">contractor</field>
+            <field name="from_year">0</field>
+            <field name="to_year">1</field>
+            <field name="number_of_years">less_than_1_year</field>
+            <field name="number_of_days">0</field>
+            <field name="multiplier">0</field>
+            <field name="reason">resignation</field>
+        </record>
+        <record model="hr.gratuity" id="res_hr_gratuity_record_11">
+            <field name="contract_type">contractor</field>
+            <field name="from_year">1</field>
+            <field name="to_year">3</field>
+            <field name="number_of_years">1_to_3_years</field>
+            <field name="number_of_days">7</field>
+            <field name="multiplier">0</field>
+            <field name="reason">resignation</field>
+        </record>
+        <record model="hr.gratuity" id="res_hr_gratuity_record_12">
+            <field name="contract_type">contractor</field>
+            <field name="from_year">3</field>
+            <field name="to_year">5</field>
+            <field name="number_of_years">3_to_5_years</field>
+            <field name="number_of_days">14</field>
+            <field name="multiplier">0</field>
+            <field name="reason">resignation</field>
+        </record>
+        <record model="hr.gratuity" id="res_hr_gratuity_record_13">
+            <field name="contract_type">contractor</field>
+            <field name="from_year">5</field>
+            <field name="to_year">99</field>
+            <field name="number_of_years">more_than_5_years</field>
+            <field name="number_of_days">30</field>
+            <field name="multiplier">0</field>
+            <field name="reason">resignation</field>
+        </record>
+        <record model="hr.gratuity" id="res_hr_gratuity_record_14">
+            <field name="contract_type">contractor</field>
+            <field name="from_year">5</field>
+            <field name="to_year">0</field>
+            <field name="number_of_years">completion_of_5_years</field>
+            <field name="number_of_days">21</field>
+            <field name="multiplier">0</field>
+            <field name="reason">resignation</field>
+        </record>
+        <record model="hr.gratuity" id="res_hr_gratuity_record_15">
+            <field name="contract_type">contractor</field>
+            <field name="from_year">0</field>
+            <field name="to_year">1</field>
+            <field name="number_of_years">less_than_1_year</field>
+            <field name="number_of_days">0</field>
+            <field name="multiplier">0</field>
+            <field name="reason">termination</field>
+        </record>
+        <record model="hr.gratuity" id="res_hr_gratuity_record_16">
+            <field name="contract_type">contractor</field>
+            <field name="from_year">1</field>
+            <field name="to_year">5</field>
+            <field name="number_of_years">1_to_5_years</field>
+            <field name="number_of_days">21</field>
+            <field name="multiplier">0</field>
+            <field name="reason">termination</field>
+        </record>
+        <record model="hr.gratuity" id="res_hr_gratuity_record_17">
+            <field name="contract_type">contractor</field>
+            <field name="from_year">5</field>
+            <field name="to_year">99</field>
+            <field name="number_of_years">more_than_5_years</field>
+            <field name="number_of_days">30</field>
+            <field name="multiplier">0</field>
+            <field name="reason">termination</field>
+        </record>
+    </data>
+</odoo>

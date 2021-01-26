@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_resource_calender_variant_form">
+            <field name="name">resource.calendar.variant</field>
+            <field name="model">resource.calendar.variant</field>
+            <field name="arch" type="xml">
+                <form string=" Resource Calendar Variant">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="related_resource_calender"/>
+                            <field name="Duration" widget='float_time'/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="resource_calendar_attendance_view_form_inherit" model="ir.ui.view">
+            <field name="name">resource.calendar.attendance.inherit</field>
+            <field name="inherit_id" ref="resource.view_resource_calendar_attendance_form"/>
+            <field name="model">resource.calendar.attendance</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='day_period']" position="before">
+                    <field name="break_time" widget='float_time'/>
+                    <field name="net_hours" widget='float_time'/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_resource_calendar_attendance_inherit_tree" model="ir.ui.view">
+            <field name="name">resource.calendar.attendance.inherit.tree</field>
+            <field name="model">resource.calendar.attendance</field>
+            <field name="inherit_id" ref="resource.view_resource_calendar_attendance_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='week_type']" position="before">
+                    <field name="break_time" widget="float_time"/>
+                    <field name="net_hours" widget="float_time"/>
+                </xpath>
+
+            </field>
+        </record>
+<!--         <record id="view_resource_calendar_inherit_variant_tree" model="ir.ui.view">-->
+<!--            <field name="name">resource.calendar.inherit.variant.tree</field>-->
+<!--            <field name="model">resource.calendar</field>-->
+<!--            <field name="inherit_id" ref="resource.resource_calendar_form"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//field[@name='tz']" position="after">-->
+<!--                    <field name="resource_variant_id"/>-->
+<!--                </xpath>-->
+
+<!--            </field>-->
+<!--        </record>-->
+
+        <record id="action_resource_attendance" model="ir.actions.act_window">
+            <field name="name">Weekly Shifts</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">resource.calendar.attendance</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem
+            id="menu_resource_calender_attendance"
+            name="Weekly Shifts"
+            parent="planning.planning_menu_settings"
+            sequence="30"
+            action="action_resource_attendance"
+            groups="base.group_system"/>
+
+    </data>
+</odoo>

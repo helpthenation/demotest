@@ -1,0 +1,73 @@
+<odoo>
+    <data>
+
+        <record id="tree_view_salary_advance_settings" model="ir.ui.view">
+            <field name="name">Salary.Advance.Settings.Tree.View</field>
+            <field name="model">salary.advance.settings</field>
+            <field name="arch" type="xml">
+                <tree> <!--edit="false"-->
+                    <field name="name" optional="show"/>
+                    <field name="num_of_yearly_request" optional="show"/>
+                    <!--                    <field name="year" optional="show"/>-->
+                    <field name="deadline_month_day" optional="show"/>
+                    <field name="contract_subgroup_ids" optional="show"/>
+                    <field name="active" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="form_view_salary_advance_settings">
+            <field name="name">Salary.Advance.Settings.Form.View</field>
+            <field name="model">salary.advance.settings</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title pr-0" name="title">
+                            <h1 class="d-flex flex-row justify-content-between">
+                                <field name="name" class="text-truncate" placeholder="Name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="num_of_yearly_request" required="1"/>
+                                <field name="deadline_month_day"/>
+                                <!--                                <field name="year"/>-->
+                            </group>
+                            <group>
+                                <field name="active"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="contract_subgroup_ids" widget="many2many_tags"
+                                       options="{'no_create': True, 'no_open': True,'no_edit': True}"/>
+                            </group>
+                            <group>
+                                <field name="bypass_employee_ids" widget="many2many_tags"
+                                       options="{'no_create': True, 'no_open': True,'no_edit': True}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="salary_advance_settings_act_window" model="ir.actions.act_window">
+            <field name="name">Salary Advance Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">salary.advance.settings</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="child_menu_salary_advance_settings"
+                  name="Salary Advance Settings"
+                  parent="approvals.approvals_menu_config"
+                  action="salary_advance_settings_act_window"
+                  groups="security_groups.group_hc_employee"
+                  sequence="10"/>
+
+    </data>
+</odoo>

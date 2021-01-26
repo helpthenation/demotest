@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_salary_advance_settings,salary_advance_approvals.salary_advance_settings,model_salary_advance_settings,,1,1,1,1
+access_advance_salary_history,salary_advance_approvals.advance_salary_history,model_advance_salary_history,,1,1,1,1

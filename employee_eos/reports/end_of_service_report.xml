@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_end_of_service_report_document_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="res_company_custom.external_layout_custom">
+                    <div class="page">
+                        <style>
+                            .table_1 {
+                            table-layout: fixed;
+                            }
+                            .table_1 td,.table_1 th {
+                            border: 1px solid #454141;
+                            text-align: left;
+                            padding: 4px;
+                            }
+                            .table_1 th{
+                            width: 250px;
+                            }
+                            .table_1 td p{
+                            width: 99%;
+                            }
+                        </style>
+                        <div style="padding-left: 4%;padding-top: 1%;font-size: 15px;">
+                            <div style="padding-top: 1%;">
+                                <span>Ref:</span>
+                                <span t-esc="doc.reference_num"/>
+                            </div>
+                            <div>
+                                <span>Creation Date:</span>
+                                <span t-field="doc.create_date" t-field-options='{"format": "d/m/Y"}'/>
+                            </div>
+                            <div style="padding-top: 2%;font-size: 20px;">
+                                <b>
+                                    <span>Subject :End of Service Report</span>
+                                </b>
+                            </div>
+                            <div style="padding-top: 2%;">
+                                <div>
+                                    <b>
+                                        <span>Employee Information</span>
+                                    </b>
+                                </div>
+                                <table class="table_1">
+                                    <tr>
+                                        <th>Employee ID</th>
+                                        <td>
+                                            <span t-field="doc.employee_id.system_id"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Employee Name</th>
+                                        <td>
+                                            <span t-field="doc.employee_id.name"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Position</th>
+                                        <td>
+                                            <span t-field="doc.job_position.name"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Grade</th>
+                                        <td>
+                                            <span t-field="doc.job_grade.name"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Company</th>
+                                        <td>
+                                            <!--                                            <p>Need to Discuss</p>-->
+                                            <!--                                            <span t-field="doc.employee_job_grade.name"/>-->
+                                        </td>
+                                    </tr>
+
+                                </table>
+                                <div style="padding-top: 2%;">
+                                    <b>
+                                        <span>End of Service Information</span>
+                                    </b>
+                                </div>
+                                <table class="table_1">
+                                    <tr>
+                                        <th>Leaving Reason</th>
+                                        <td>
+                                            <span t-field="doc.leaving_reason"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Date of Joining</th>
+                                        <td>
+                                            <span t-field="doc.date_of_joining" t-field-options='{"format": "d/m/Y"}'/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Last Working Date</th>
+                                        <td>
+                                            <span t-field="doc.last_working_date"
+                                                  t-field-options='{"format": "d/m/Y"}'/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Number of unpaid days</th>
+                                        <td>
+                                            <span t-field="doc.remaining_leave_days"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Years</th>
+                                        <td>
+                                            <span t-field="doc.service_years"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Months</th>
+                                        <td>
+                                            <span t-field="doc.service_month"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Days</th>
+                                        <td>
+                                            <span t-field="doc.service_day"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div style="padding-top: 2%;">
+                                    <b>
+                                        <span>Earning Items</span>
+                                    </b>
+                                </div>
+                                <table class="table_1">
+                                    <tr>
+                                        <th>Gratuity Amount</th>
+                                        <td>
+                                            <t t-set="gratuity_payments_amount" t-value="doc.gratuity_payments_amount"/>
+                                            <!--                                            <span t-field="round(doc.gratuity_payments_amount)"/>-->
+                                            <t t-esc="round(gratuity_payments_amount,2)"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Notice Pay Amount</th>
+                                        <td>
+                                            <t t-set="notice_pay_amount" t-value="doc.notice_pay_amount"/>
+                                            <t t-esc="round(notice_pay_amount,2)"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Leave Encashment</th>
+                                        <td>
+                                            <t t-set="leave_encashment" t-value="doc.leave_encashment"/>
+                                            <t t-esc="round(leave_encashment,2)"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Other Earning</th>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div style="padding-top: 2%;">
+                                    <b>
+                                        <span>Deduction Items</span>
+                                    </b>
+                                </div>
+                                <table class="table_1">
+                                    <tr>
+                                        <th>Leave Deduction</th>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Other Deduction</th>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

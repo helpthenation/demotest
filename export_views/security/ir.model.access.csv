@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_export_data_views,export_views.export_data_views,model_export_data_views,,1,1,1,1
+access_company_location,company.location,model_company_location,"",1,1,1,1

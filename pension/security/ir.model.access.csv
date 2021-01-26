@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pension_rule,pension.rule,model_pension_rule,,1,1,1,1
+access_pension_line_rule,pension.line.rule,model_pension_line_rule,,1,1,1,1

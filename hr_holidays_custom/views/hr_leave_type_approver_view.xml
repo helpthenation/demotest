@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_hr_leave_type_approver_form">
+            <field name="name">hr.leave.type.approver.form</field>
+            <field name="model">hr.leave.type.approver</field>
+            <field name="arch" type="xml">
+                <form string="Leave Approver">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="leave_type_id"/>
+                                <field name="sequence"/>
+                                <field name="is_line_manager"/>
+                            </group>
+                            <group>
+                                <field name="user_id" attrs="{'readonly':[('is_line_manager', '=', True)]}"/>
+                                <field name="category"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_hr_leave_type_approver_tree" model="ir.ui.view">
+            <field name="name">hr.leave.type.approver.tree</field>
+            <field name="model">hr.leave.type.approver</field>
+            <field name="arch" type="xml">
+                <tree string="Schools">
+                    <field name="leave_type_id"/>
+                    <field name="sequence"/>
+                    <field name="is_line_manager"/>
+                    <field name="user_id" attrs="{'readonly':[('is_line_manager', '=', True)]}"/>
+                    <field name="category"/>
+                </tree>
+            </field>
+        </record>
+        <record id="hr_leave_approver_type_action" model="ir.actions.act_window">
+            <field name="name">Leave Approver Type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.leave.type.approver</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="hr_holidays_leave_approver_type_menu_configuration" action="hr_leave_approver_type_action"
+                  name='Leave Approver Type' groups="hr_holidays.group_hr_holidays_user"
+                  parent="hr_holidays.menu_hr_holidays_configuration" sequence="1"/>
+    </data>
+</odoo>

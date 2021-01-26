@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <!-- fot hide export xls of the specific groups -->
+        <record model="ir.ui.view" id="view_hr_appraisal_tree_hide_export_xls">
+            <field name="name">hr.appraisal.tree.inherit</field>
+            <field name="model">hr.appraisal</field>
+            <field name="inherit_id" ref="hr_appraisal.view_hr_appraisal_tree"/>
+            <field name="groups_id" eval="[(4, ref('roles_segregation.group_hc_compensation_and_benefits'))]"/>
+            <field name="arch" type="xml">
+                <tree position="attributes">
+                    <attribute name="export_xlsx">false</attribute>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

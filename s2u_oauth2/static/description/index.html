@@ -1,0 +1,162 @@
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan" style="color:#875A7B;">Microsoft Azure SSO Oauth2</h2>
+        <h3 class="oe_slogan">Let users login via Office 365 / Azure AD</h3>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span6">
+            <p>Single Sign On in Odoo with the same account as your office 365 / Azure AD Account.</p>
+            15-04-2020 - Update: if Odoo users not exist, you can let them create automaticaly by setting systemparameter:
+            s2u_msaccount with the value True of true.<br />
+            Please be sure that when creating your App in Azure: "Accounts in this organization directory only (Company name -
+            Single tenant)" is selected. Otherwise other MS users can also create a Odoo account in your Application.
+        </div>
+        <div class="oe_span6">
+            <h2>Screenshots</h2>
+            <p>Login</p>
+            After logging into <a href="https://portal.azure.com/">Azure Portal</a> go to Active directory <br />
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="login 3.jpg">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <h2>Select "App registrations"</h2>
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="login 4.jpg">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <h2>Register new application</h2>
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="app 1.jpg">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <h2>Fill in application details</h2>
+            <p>For this example Odoo is running localy. So in this case we fill in:
+                <br />
+                Odoo 13 - test<br />
+                And at Redirect URI:<br />
+                http://localhost:8071/auth_oauth/microsoft<br />
+            </p>
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="app 2.jpg">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <h2>Filled in example</h2>
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="app 3.jpg">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <h2>When App Registration is done, in the overview copy the "Application (client) ID". This we need in Odoo</h2>
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="app 4.jpg">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <h2>To gain access, we need a secret key. go to "Certificates & Secrects" and select "New client secret"</h2>
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="app 5.jpg">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <h2>Fillin a description and select expire time.</h2>
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="app 6.jpg">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <h2>Filled example</h2>
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="app 7.jpg">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <h2>After created secret key, store the value of this key. We need this in Odoo</h2>
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="app 8.jpg">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <h2>Give user permissions to view own data.</h2>
+            All this is done via the Microsoft Graph Api. <a href="https://docs.microsoft.com/en-us/graph/">Microsoft Graph documentation</a>
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="app 9.jpg">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <h2>Select Microsoft Graph:</h2>
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="permissions 1.jpg">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <h2>Choose Delegated permissions:</h2>
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="permissions 3.jpg">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <h2>Search for user.read in the search bar and check User.Read.All</h2>
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="permissions 5.jpg">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <h2>Grant admin consent for the company:</h2>
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="permissions 11.jpg">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <h2>Odoo setting after installing the app:</h2>
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="odoo settings 1.jpg">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <h2>Odoo setting after installing the app:</h2>
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="odoo settings 2.jpg">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <h2>Create a new connection if Microsoft not exists. Or edit it.</h2>
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="odoo settings 3.jpg">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <h2>After installing the app and the settings are done. Go to the site:</h2>
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="odoo login 1.jpg">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <h2>login with you microsoft account:</h2>
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="odoo login 2.jpg">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <h2>give permisions to Odoo to read your profile:</h2>
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="odoo login 3.jpg">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <h2>Don't forget to logout, Your Mircosoft session is stil active when you don't log in to Odoo:</h2>
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="logout.jpg">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_separator">
+</section>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- Tree view for the Education Request-->
+        <record id="end_of_service_tree_view" model="ir.ui.view">
+            <field name="name">end.of.service.Tree</field>
+            <field name="model">end.of.service</field>
+            <field name="arch" type="xml">
+                <tree edit="false">
+                    <field name="name" optional="show"/>
+                    <field name="employee_id" options="{'no_create': True, 'no_edit': True,'no_open': True}"
+                           optional="show"/>
+                    <field name="date_of_joining" optional="show"/>
+                    <field name="last_working_date" optional="show"/>
+                    <field name="leaving_reason" optional="show"/>
+                    <field name="submitted_date" optional="show"/>
+                    <field name="request_status" optional="show"/>
+
+                </tree>
+            </field>
+        </record>
+
+
+        <!-- Form view for the end or service-->
+        <record id="end_of_service_form_view" model="ir.ui.view">
+            <field name="name">End.Of.Service.form</field>
+            <field name="model">end.of.service</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="request_status" invisible="1"/>
+                        <field name="user_status" invisible="1"/>
+                        <field name="request_status" widget="statusbar"
+                               statusbar_visible="new,submit,under_approval,approved"/>
+                        <button name="action_submit_request"
+                                string="Submit To Approver" type="object"
+                                class="btn-primary"
+                                attrs="{'invisible': [('request_status','not in',['new'])]}"/>
+                        <button name="action_approve" string="Approve" type="object"
+                                attrs="{'invisible':[('user_status','!=','pending')]}"/>
+                        <button name="%(open_end_of_service_request_reject_reason_action)d" string="Refuse"
+                                type="action"
+                                attrs="{'invisible':[('user_status','!=','pending')]}"/>
+                        <button name="action_cancel" string="Cancel" type="object"
+                                attrs="{'invisible':[('request_status','in',['cancel','refused','under_approval','approved'])]}"/>
+                        <button name="print_report" string="Print Report" type="object"
+                                attrs="{'invisible':[('request_status','not in',['approved'])]}"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" invisible="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="employee_id" options="{'no_create': True, 'no_edit': True,'no_open': True}"
+                                       required="1"/>
+                                <field name="job_position"
+                                       options="{'no_create': True, 'no_edit': True,'no_open': True}" readonly="1"/>
+                                <field name="job_grade" readonly="1"/>
+                                <field name="date_of_joining" required="1"/>
+                                <field name="last_working_date" required="1"/>
+                                <field name="leaving_reason" required="1"/>
+                            </group>
+                            <group>
+                                <field name="create_date" readonly="1"/>
+                                <field name="submitted_date" readonly="1"/>
+                                <field name="reference_num" readonly="1"/>
+                                <field name="request_owner_id" readonly="1"/>
+                                <field name="gratuity_setting_ids" widget="many2many_tags" readonly="1"/>
+                                <field name="eos_setting_id" readonly="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="service_years" readonly="1"/>
+                                <field name="service_month" readonly="1"/>
+                                <field name="service_day" readonly="1"/>
+                                <field name="number_of_unpaid_days" readonly="1"/>
+                                <field name="remaining_leave_days" readonly="1"/>
+                                <field name="last_working_month_for_payslip" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="notice_pay_amount" readonly="1"/>
+                                <field name="gratuity_payments_amount" readonly="1"/>
+                                <field name="leave_encashment" readonly="1"/>
+
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="approver_page" string="Approver(s)">
+                                <group>
+                                    <field name="read_only_user" invisible="1"/>
+                                    <field name="approver_ids" attrs="{'readonly':[('read_only_user','=',True)]}"
+                                           mode="tree" force_save="1">
+                                        <tree editable="bottom" decoration-success="status=='approved'"
+                                              decoration-warning="status=='pending'"
+                                              decoration-danger="status=='refused'">
+                                            <field name="sequence" invisible="1" widget="handle"/>
+                                            <field name="sequence"/>
+                                            <field name="user_id" string="Approver" force_save="1"
+                                                   attrs="{'readonly':[('status','!=','new')]}"/>
+                                            <field name="status"/>
+                                            <field name="approval_category" force_save="1" readonly="1"/>
+                                        </tree>
+                                        <form>
+                                            <sheet>
+                                                <group>
+                                                    <group>
+                                                        <field name="sequence" readonly="1"/>
+                                                        <field name="user_id"
+                                                               options="{'no_create': True, 'no_edit': True,'no_open': True}"
+                                                               readonly="1"/>
+                                                        <field name="status" readonly="1"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="approval_category" force_save="1" readonly="1"/>
+                                                        <field name="reject_reason" readonly="1"/>
+                                                        <field name="end_of_service_id" readonly="1"/>
+                                                    </group>
+                                                </group>
+                                            </sheet>
+                                        </form>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Menu action for the all end of service-->
+        <record id="end_of_service_all_act_window" model="ir.actions.act_window">
+            <field name="name">All End Of Service Request</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">end.of.service</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- menu of the end of service-->
+        <menuitem id="child_menu_all_end_of_service"
+                  name="All End Of Service"
+                  parent="approvals.approvals_menu_manager"
+                  action="end_of_service_all_act_window"
+                  sequence="25" groups="security_groups.group_company_hc"/>
+    </data>
+
+
+    <!-- Menu action for the eos  Request  to Review-->
+    <record id="eos_request_action_to_review" model="ir.actions.act_window">
+        <field name="name">End of Service Request to Review</field>
+        <field name="res_model">end.of.service</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('approver_ids.user_id', '=', uid), ('request_status', 'in',
+            ['pending','under_approval'])]
+        </field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No new end of service request to review
+            </p>
+        </field>
+    </record>
+
+
+    <!-- Menu action for the education Request-->
+    <record id="my_eos_request_act_window" model="ir.actions.act_window">
+        <field name="name">My End of Service Request</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">end.of.service</field>
+        <field name="domain">[('request_owner_id','=',uid)]</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No new end of service request found
+            </p>
+        </field>
+    </record>
+
+
+</odoo>

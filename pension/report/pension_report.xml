@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <report
+            id="action_report_pension"
+            model="hr.payslip"
+            string="Pension Report"
+            report_type="qweb-pdf"
+            name="pension.report_pension"
+            file="pension.report_pension"
+    />
+    <template id="report_pension">
+        <t t-call="web.html_container">
+            <t t-call="web.internal_layout">
+                <div class="page">
+                    <div style="font-size: 48px; min-height: auto; font-weight: bold; text-align: center; color: #5F5F5F; background-color: #F8F8F8; border: 1px solid #875A7B;">
+                        <strong>Pension Report</strong>
+                    </div>
+                    <p></p>
+                    <t t-foreach="docs" t-as="p">
+                        <table class="table table-sm table-bordered">
+                            <tr>
+                                <td style="background:#F3F5F6;color:#515166;">
+                                    <strong>Employee name</strong>
+                                </td>
+                                <td style="background:#F3F5F6;color:#515166;">
+                                    <div>
+                                        <span t-field="p.employee_id.name"/>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Payslip Reference</strong>
+                                </td>
+                                <td>
+                                    <div>
+                                        <span t-field="p.number"/>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Payslip name</strong>
+                                </td>
+                                <td>
+                                    <div>
+                                        <span t-field="p.name"/>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Basic</th>
+                                    <th>Housing</th>
+                                    <th>Employee Share</th>
+                                    <th>Company Share</th>
+                                    <th>Total Contribution</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span t-esc="p.get_basic(p.contract_id)"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="p.get_housing(p.contract_id)"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="p.get_pension(p.contract_id)"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="p.get_company_share(p.contract_id)"/>
+                                    </td>
+                                    <td style="background:#F3F5F6;color:#515166;">
+                                        <span t-esc="p.get_total_contribution(p.contract_id)"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </t>
+
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

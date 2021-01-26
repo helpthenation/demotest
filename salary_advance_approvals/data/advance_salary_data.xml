@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- xml record for the salary.advance.settings-->
+        <record model="salary.advance.settings" id="res_advance_salary_settings_rule_1">
+            <field name="num_of_yearly_request">1</field>
+            <field name="deadline_month_day">10</field>
+        </record>
+        <record model="salary.advance.settings" id="res_advance_salary_settings_rule_2">
+            <field name="num_of_yearly_request">4</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Sequences for Salary Advance Settings -->
+        <record id="seq_salary_advance_settings" model="ir.sequence">
+            <field name="name">Salary Advance Settings</field>
+            <field name="code">salary.advance.settings</field>
+            <field name="prefix">SAS</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Sequences for Salary Advance reference -->
+        <record id="seq_salary_advance_ref" model="ir.sequence">
+            <field name="name">Salary Advance Reference</field>
+            <field name="code">salary.advance.auto.ref</field>
+            <field name="prefix">ASR</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

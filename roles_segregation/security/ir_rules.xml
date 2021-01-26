@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record model="ir.rule" id="appraisal_restriction_self_only">
+            <field name="name">Self Only Appraisal rule</field>
+            <field name="model_id" ref="hr_appraisal.model_hr_appraisal"/>
+            <field name="domain_force">
+                [('employee_id.user_id','=',user.id)]
+            </field>
+            <field name="groups" eval="[(4,ref('roles_segregation.group_hc_compensation_and_benefits'))]"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+            <field name="perm_write" eval="0"/>
+        </record>
+
+
+<!--        <record model="ir.rule" id="employee_approval_category_access_it_admin">-->
+        <!--            <field name="name">Employee Approval Category Rule It Admin</field>-->
+        <!--            <field name="model_id" ref="approvals.model_approval_category"/>-->
+        <!--            <field name="domain_force">[('1','=','0')]</field>-->
+        <!--            <field name="groups" eval="[(4,ref('roles_segregation.group_it_admin'))]"/>-->
+        <!--            <field name="perm_unlink" eval="0"/>-->
+        <!--        </record>-->
+
+
+        <!--        <record id="hr_employee_self_only" model="ir.rule">-->
+        <!--            <field name="name">Employee self only rule</field>-->
+        <!--            <field name="model_id" ref="hr.model_hr_employee"/>-->
+        <!--            <field name="global" eval="True"/>-->
+        <!--            <field name="groups" eval="[(6,0,ref('roles_segregation.group_hc_recruitment'))]"/>-->
+
+        <!--            <field name="domain_force">[('user_id','=',user)]</field>-->
+        <!--        </record>-->
+
+        <!--        <record model="ir.rule" id="ir_rule_appraisal_restriction">-->
+        <!--            <field name="name">Employee Appraisal Restriction rule</field>-->
+        <!--            <field name="model_id" ref="hr_appraisal.model_hr_appraisal"/>-->
+        <!--            <field name="domain_force">[('employee_id.user_id','=',user.id)]</field>-->
+        <!--            <field name="groups" eval="[(4,ref('roles_segregation.group_hc_compensation_and_benefits'))]"/>-->
+        <!--            <field name="perm_read" eval="True"/>-->
+        <!--            <field name="perm_write" eval="True"/>-->
+        <!--            <field name="perm_create" eval="True"/>-->
+        <!--            <field name="perm_unlink" eval="True"/>-->
+        <!--        </record>-->
+    </data>
+</odoo>

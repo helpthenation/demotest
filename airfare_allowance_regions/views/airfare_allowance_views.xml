@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="view_airfare_allowance_form">
+            <field name="name">airfare.allowance.form</field>
+            <field name="model">airfare.allowance</field>
+            <field name="arch" type="xml">
+                <form string="Airfare  Allowance" create="0" edit="0">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="grade_ids" widget='many2many_tags'/>
+                                <field name="type"/>
+                                <field name="yearly_amount"/>
+                                <field name="monthly_amount"/>
+                                <field name="region"/>
+                                <field name="class_of_travel"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_airfare_allowance_tree" model="ir.ui.view">
+            <field name="name">airfare.allowance.tree</field>
+            <field name="model">airfare.allowance</field>
+            <field name="arch" type="xml">
+                <tree string="Airfare Allowance" editable="bottom">
+                    <field name="grade_ids" widget='many2many_tags'/>
+                    <field name="type"/>
+                    <field name="yearly_amount"/>
+                    <field name="monthly_amount"/>
+                    <field name="region"/>
+                    <field name="class_of_travel"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

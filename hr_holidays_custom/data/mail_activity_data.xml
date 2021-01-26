@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="mail_activity_data_time_off_request" model="mail.activity.type">
+            <field name="name">Time Off Request Approvals</field>
+            <field name="icon">fa-check-circle</field>
+            <field name="sequence">4</field>
+            <field name="res_model_id" ref="hr_holidays_custom.model_hr_leave_approver"/>
+        </record>
+    </data>
+</odoo>

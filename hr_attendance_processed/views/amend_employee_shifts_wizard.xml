@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="amend_shifts_wizard_form" model="ir.ui.view">
+            <field name="name">amend.shifts.form</field>
+            <field name="model">amend.shifts</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="from_date"/>
+                        <field name="to_date"/>
+                        <field name="template_id"/>
+                        <field name="employee_ids" widget="many2many_tags"/>
+                    </group>
+                    <div name="info_form"
+                         class="text-center text-danger d-inline-block">
+                        Please note that the below action will delete all existing shifts for the selected employees in
+                        the mentioned date range
+                    </div>
+                    <footer>
+                        <button string="Amend Shifts"
+                                name="amend_employee_shifts" type="object" class="send btn-primary o_mail_send"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="amend_shifts_action" model="ir.actions.act_window">
+            <field name="name">Amend Employee Shifts</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">amend.shifts</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+
+        <menuitem id="menu_amend_shifts_view" name="Amend Employee Shifts"
+                  parent="planning.planning_menu_schedule" sequence="30"
+                  groups="planning.group_planning_manager" action="amend_shifts_action"/>
+
+    </data>
+
+</odoo>

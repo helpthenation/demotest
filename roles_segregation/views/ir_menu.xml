@@ -1,0 +1,270 @@
+<odoo>
+    <data noupdate="0">
+        <!--Appraisal Menu overrider and add replace old groups  new groups an also added security_groups groups so user of new group can see that menu-->
+        <record model="ir.ui.menu" id="hr_appraisal.menu_hr_appraisal_root">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('roles_segregation.group_it_admin'),ref('roles_segregation.group_ceo'),ref('roles_segregation.group_hc_manager'),ref('roles_segregation.group_hc_organizational_developments'),ref('roles_segregation.group_hc_general_service'),ref('roles_segregation.group_hc_employee_relations'),ref('hr_appraisal.group_hr_appraisal_user'),ref('hr_appraisal.group_hr_appraisal_manager'),ref('security_groups.group_hr_appraisal_employee'),ref('roles_segregation.group_hc_compensation_and_benefits')])]"/>
+        </record>
+
+        <!--Employees Main menu overrider and add new group with previous group-->
+        <record model="ir.ui.menu" id="hr.menu_hr_root">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('roles_segregation.group_it_admin'),ref('roles_segregation.group_ceo'),ref('roles_segregation.group_hc_manager'),ref('roles_segregation.group_hc_organizational_developments'),ref('roles_segregation.group_hc_recruitment'),ref('roles_segregation.group_hc_general_service'),ref('roles_segregation.group_hc_general_service'),ref('hr.group_hr_manager'),ref('roles_segregation.group_hc_compensation_and_benefits'),ref('roles_segregation.group_hc_employee_relations')])]"/>
+            <field name="action" ref="hr.open_view_employee_list_my"/>
+        </record>
+
+
+        <!-- contract compensation  menu overrider from the hr_contract_custom for the add new group with previous group-->
+        <record model="ir.ui.menu" id="hr_contract_custom.contract_compensation_menu">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('base.group_erp_manager'),ref('roles_segregation.group_hc_compensation_and_benefits'),ref('roles_segregation.group_hc_employee_relations')])]"/>
+        </record>
+
+        <!-- employee bank history menu override and add new group and previous group -->
+        <record model="ir.ui.menu" id="employee_bank_approvals.employee_bank_change_menu">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('security_groups.group_company_hc'),ref('roles_segregation.group_hc_compensation_and_benefits')])]"/>
+        </record>
+        <!-- housing loan History menu override and add new group and previous group-->
+        <record model="ir.ui.menu" id="housing_loan_approvals.housing_loan_menuitem">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('roles_segregation.group_hc_general_service'),ref('security_groups.group_company_hc'),ref('roles_segregation.group_hc_compensation_and_benefits')])]"/>
+        </record>
+
+        <!-- Salary Advance History menu override and add new group and previous group-->
+        <record model="ir.ui.menu" id="salary_advance_approvals.salary_advance_history_menu">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('base.user_admin'),ref('roles_segregation.group_hc_compensation_and_benefits')])]"/>
+        </record>
+
+        <!-- overrider Employee/contract menu for the add new group and also previous group-->
+        <record model="ir.ui.menu" id="hr_contract.hr_menu_contract">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('roles_segregation.group_hc_employee_relations'),ref('hr_contract.group_hr_contract_manager'),ref('roles_segregation.group_hc_compensation_and_benefits')])]"/>
+        </record>
+        <!--        ref('roles_segregation.group_hc_recruitment')-->
+
+
+        <!--Approval Menu override for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="approvals.approvals_menu_root">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('roles_segregation.group_it_admin'),ref('roles_segregation.group_ceo'),ref('roles_segregation.group_hc_manager'),ref('roles_segregation.group_hc_organizational_developments'),ref('roles_segregation.group_hc_recruitment'),ref('roles_segregation.group_hc_general_service'),ref('roles_segregation.group_hc_employee_relations'),ref('roles_segregation.group_hc_compensation_and_benefits'),ref('security_groups.group_company_employee'),ref('security_groups.group_company_hc'),ref('base.group_system')])]"/>
+        </record>
+
+
+        <!--Dashboards Menu override for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="base.menu_board_root">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('roles_segregation.group_ceo'),ref('roles_segregation.group_hc_manager'),ref('roles_segregation.group_hc_organizational_developments'),ref('roles_segregation.group_hc_recruitment'),ref('roles_segregation.group_hc_general_service'),ref('roles_segregation.group_hc_employee_relations'),ref('roles_segregation.group_hc_compensation_and_benefits'),ref('security_groups.group_company_employee'),ref('security_groups.group_company_hc'),ref('base.group_system')])]"/>
+        </record>
+
+
+        <!--Survey Menu override for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="survey.menu_surveys">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('roles_segregation.group_hc_organizational_developments'),ref('roles_segregation.group_hc_recruitment'),ref('survey.group_survey_user'),ref('roles_segregation.group_hc_employee_relations')])]"/>
+        </record>
+
+
+        <!-- Override Employee/Employee/Employee menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="hr.menu_hr_employee_user">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('base.group_erp_manager'),ref('roles_segregation.group_hc_employee_relations')])]"/>
+        </record>
+
+
+        <!-- Override Employee/Employee/Warning  menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="hr_contract_custom.hr_notice_menu">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('base.group_erp_manager'),ref('roles_segregation.group_hc_employee_relations')])]"/>
+        </record>
+
+        <!-- Override Employee/Employees Skills  menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="hr_employee_custom.hr_employee_skills_menu">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('base.group_erp_manager'),ref('roles_segregation.group_hc_employee_relations')])]"/>
+        </record>
+
+        <!-- Override Employee/Employees Skills  menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="hr_employee_custom.hr_employee_skills_menu">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('base.group_erp_manager'),ref('roles_segregation.group_hc_employee_relations')])]"/>
+        </record>
+
+        <!-- Override Employee/Resignations   menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="hr_contract_custom.hr_resign_menu">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('base.group_erp_manager'),ref('roles_segregation.group_hc_employee_relations')])]"/>
+        </record>
+
+        <!-- Override Employee/Employee Exit/Exit Requests    menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="hr_exit_process.menu_exit">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('roles_segregation.group_hc_compensation_and_benefits'),ref('roles_segregation.group_hc_organizational_developments'),ref('security_groups.group_company_hc'),ref('roles_segregation.group_hc_employee_relations')])]"/>
+        </record>
+
+        <!-- Override recruitment  menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="hr_recruitment.menu_hr_recruitment_root">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('roles_segregation.group_ceo'),ref('roles_segregation.group_hc_manager'),ref('roles_segregation.group_hc_recruitment'),ref('hr_recruitment.group_hr_recruitment_user'),ref('roles_segregation.group_hc_employee_relations')])]"/>
+        </record>
+
+
+        <!-- Override housing  menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="hr_contract_custom.hr_housing_menu">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('base.group_erp_manager'),ref('roles_segregation.group_hc_general_service')])]"/>
+        </record>
+
+        <!-- Override appraisal feedback  menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="hr_appraisal_feedback.hr_appraisal_feedback">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('security_groups.group_company_hc'),ref('roles_segregation.group_hc_organizational_developments')])]"/>
+        </record>
+
+
+        <!-- Override appraisal calibration  menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="hr_appraisal_calibration.hr_appraisal_calibration_menuitem">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('security_groups.group_company_hc'),ref('roles_segregation.group_hc_organizational_developments')])]"/>
+        </record>
+
+
+        <!-- Override appraisal report  menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="hr_appraisal.menu_hr_appraisal_report">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('security_groups.group_company_hc'),ref('roles_segregation.group_hc_organizational_developments')])]"/>
+        </record>
+
+        <!-- Override appraisal configuration  menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="hr_appraisal.menu_hr_appraisal_configuration">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('roles_segregation.group_it_admin'),ref('security_groups.group_company_hc'),ref('roles_segregation.group_hc_organizational_developments')])]"/>
+        </record>
+
+        <!-- Override appraisal configuration appraisal reminder  menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="hr_appraisal.menu_appraisal_reminder">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('hr_appraisal.group_hr_appraisal_manager'),ref('roles_segregation.group_hc_organizational_developments')])]"/>
+        </record>
+
+
+        <!-- Override appraisal configuration appraisal reminder  menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="hr.menu_human_resources_configuration">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('roles_segregation.group_it_admin'),ref('hr.group_hr_manager'),ref('roles_segregation.group_hc_organizational_developments')])]"/>
+        </record>
+
+        <!-- Override approvals manager  menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="approvals.approvals_menu_manager">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('approvals.group_approval_user'),ref('roles_segregation.group_hc_organizational_developments')])]"/>
+        </record>
+
+        <!-- Override approvals config  menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="approvals.approvals_menu_config">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('security_groups.group_hc_employee'),ref('roles_segregation.group_it_admin')])]"/>
+        </record>
+        <!-- Override approvals config  approval types menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="approvals.approvals_category_menu_config">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('approvals.group_approval_manager'),ref('roles_segregation.group_it_admin')])]"/>
+        </record>
+
+        <!-- Override approvals config   resignation reason menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="hr_approvals.resignation_reason_menu">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('approvals.group_approval_manager'),ref('roles_segregation.group_it_admin')])]"/>
+        </record>
+
+        <!-- Override approvals config  salary advance settings menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="salary_advance_approvals.child_menu_salary_advance_settings">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('security_groups.group_hc_employee'),ref('roles_segregation.group_it_admin')])]"/>
+        </record>
+
+
+        <!-- Override approvals config  responsible person menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="employee_report_request.child_menu_config_responsible_person">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('security_groups.group_hc_employee'),ref('roles_segregation.group_it_admin')])]"/>
+        </record>
+
+
+        <!-- Override approvals config travel request settings menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="employee_travel_management.child_menu_employee_travel_request_settings">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('security_groups.group_company_hc'),ref('roles_segregation.group_it_admin')])]"/>
+        </record>
+
+        <!-- Override Employee Chart menu for the add new group with  previous group-->
+        <record model="ir.ui.menu" id="web_org_chart.company_chart">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('security_groups.group_company_hc')])]"/>
+        </record>
+
+
+        <!--        &lt;!&ndash; Override  Apps menu for the add new group with  previous group&ndash;&gt;-->
+        <!--        <record model="ir.ui.menu" id="base.menu_management">-->
+        <!--            <field name="groups_id"-->
+        <!--                   eval="[(6,0,[ref('base.group_system'),ref('roles_segregation.group_it_admin')])]"/>-->
+        <!--        </record>-->
+
+
+        <!--        &lt;!&ndash; Override settings  menu for the add new group with  previous group&ndash;&gt;-->
+        <!--        <record model="ir.ui.menu" id="base.menu_administration">-->
+        <!--            <field name="groups_id"-->
+        <!--                   eval="[(6,0,[ref('roles_segregation.group_it_admin'),ref('base.group_erp_manager'),ref('base.group_system')])]"/>-->
+
+        <!--        </record>-->
+
+
+        <!--        &lt;!&ndash; Override settings/General Settings  menu for the add new group with  previous group&ndash;&gt;-->
+        <!--        <record model="ir.ui.menu" id="base_setup.menu_config">-->
+        <!--            <field name="groups_id"-->
+        <!--                   eval="[(6,0,[ref('roles_segregation.group_it_admin'),ref('base.group_system')])]"/>-->
+
+        <!--        </record>-->
+
+
+        <!--        &lt;!&ndash;Employees company menu overrider and add new group with previous group&ndash;&gt;-->
+        <!--        <record model="ir.ui.menu" id="security_rules.menu_root_company_employee">-->
+        <!--            <field name="groups_id"-->
+        <!--                   eval="[(6,0,[ref('security_groups.group_company_employee'),ref('roles_segregation.group_hc_recruitment')])]"/>-->
+        <!--            <field name="action" ref="hr.open_view_employee_list_my"/>-->
+        <!--        </record>-->
+
+
+        <!--        &lt;!&ndash; documents main  menu for the add new group with  previous group&ndash;&gt;-->
+        <!--        <record model="ir.ui.menu" id="documents.menu_root">-->
+        <!--            <field name="groups_id"-->
+        <!--                   eval="[(6,0,[ref('documents.group_documents_user'),ref('roles_segregation.group_hc_general_service')])]"/>-->
+        <!--        </record>-->
+
+
+        <!--        <menuitem-->
+        <!--                id="security_rules.menu_root_company_employee"-->
+        <!--                name="Employees"-->
+        <!--                groups="security_groups.group_company_employee,roles_segregation.group_hc_compensation_and_benefits"-->
+        <!--                sequence="75"-->
+        <!--                action="hr_employee_custom.open_view_company_employees"/>-->
+
+
+        <!--        Employee main menu overrider for add new group also we are add previous groups using 6,0-->
+        <!--        <record model="ir.ui.menu" id="hr.menu_hr_root">-->
+        <!--            <field name="groups_id"-->
+        <!--                   eval="[(6,0,[ref('roles_segregation.group_hc_compensation_and_benefits'),ref('hr.group_hr_manager')])]"/>-->
+        <!--        </record>-->
+
+
+        <!--        Employees Menu-->
+        <!--        <record model="ir.ui.menu" id="security_rules.menu_root_company_employee">-->
+        <!--            <field name="groups_id"-->
+        <!--                   eval="[(6,0,[ref('security_groups.group_company_employee'),ref('roles_segregation.group_hc_compensation_and_benefits')])]"/>-->
+        <!--            <field name="action" ref="hr.open_view_employee_list_my"/>-->
+        <!--        </record>-->
+
+
+    </data>
+</odoo>

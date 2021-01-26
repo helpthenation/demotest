@@ -1,0 +1,60 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_pension_rule_form">
+            <field name="name">pension.rule.form</field>
+            <field name="model">pension.rule</field>
+            <field name="arch" type="xml">
+                <form string="Schools">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="country_id" options="{'no_create_edit': True, 'no_open': True}"/>
+                                <field name="contract_subgroups_id"
+                                       options="{'no_create_edit': True, 'no_open': True}"/>
+                                <field name="from_date"/>
+                                <field name="to_date"/>
+
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Pension Line Rule">
+                                <field name="lines_ids" editable="bottom">
+<!--                                    <field name="pension_id"/>-->
+                                    <field name="share"/>
+                                    <field name="percentage"/>
+                                    <field name="detail"/>
+                                    <field name="fixed_amount"/>
+                                    <field name="component"/>
+                                    <field name="component_percentage"/>
+                                </field>
+
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_pension_rule_tree" model="ir.ui.view">
+            <field name="name">pension.rule.tree</field>
+            <field name="model">pension.rule</field>
+            <field name="arch" type="xml">
+                <tree string="Schools">
+                    <field name="name"/>
+                    <field name="country_id"/>
+                    <field name="contract_subgroups_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="pension_rule_action" model="ir.actions.act_window">
+            <field name="name">Pension Rule</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pension.rule</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_pension_rule_view" name="Pension Rule"
+                  parent="hr_payroll.menu_hr_salary_configuration" sequence="40"
+                  action="pension_rule_action"/>
+    </data>
+</odoo>

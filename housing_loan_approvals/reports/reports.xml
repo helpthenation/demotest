@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Report Action for the Housing Loan Request -->
+        <report
+                string="Housing Loan Request Report"
+                id="report_housing_loan"
+                model="approval.request"
+                report_type="qweb-pdf"
+                name="housing_loan_approvals.report_housing_loan_template"
+                file="housing_loan_approvals.report_housing_loan_template"
+                print_report_name="'Housing Loan Request Report '"
+                menu="False"
+                paperformat="res_company_custom.paper_format_custom"
+        />
+    </data>
+</odoo>

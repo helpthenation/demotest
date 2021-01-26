@@ -1,0 +1,5 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_import_employee_documents_user","import.employee.documents.user","model_import_employee_documents",,1,0,0,0
+"access_import__employee_documents_manager","import.employee.documents.manager","model_import_employee_documents",,1,1,1,1
+"access_import_employee_documents_log_line_user","import.employee.documents.log.line.user","model_import_employee_documents_log_line",,1,0,0,0
+"access_import__employee_documents_log_line_manager","import.employee.documents.log.line.manager","model_import_employee_documents_log_line",,1,1,1,1

@@ -1,0 +1,21 @@
+<odoo>
+    <!-- Assets -->
+    <template id="_assets_primary_variables_test" inherit_id="web._assets_primary_variables">
+        <xpath expr="//link" position="inside">
+            <link rel="stylesheet" type="text/scss" href="/qia_theme/static/src/scss/primary_variables.scss"/>
+        </xpath>
+    </template>
+
+    <template id="assets_common_image" name="web_enterprise assets common image" inherit_id="web.assets_common">
+        <xpath expr="//link[@href='/web_enterprise/static/src/scss/ui.scss']" position="replace">
+            <link rel="stylesheet" type="text/scss" href="/qia_theme/static/src/scss/ui.scss"/>
+        </xpath>
+    </template>
+
+    <template id="assets_backend" name="web_enterprise assets backend QIA" inherit_id="web.assets_backend">
+        <xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" type="text/scss" href="/qia_theme/static/src/scss/home_menu.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/qia_theme/static/src/scss/control_panel_layout.scss"/>
+        </xpath>
+    </template>
+</odoo>

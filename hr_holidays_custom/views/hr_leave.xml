@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="hr_holiday_leave_type_view_form_inherit" model="ir.ui.view">
+            <field name="name">hr.leave.inherit.form</field>
+            <field name="model">hr.leave</field>
+            <field name="inherit_id" ref="hr_holidays.hr_leave_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='description']" position="after">
+                    <group>
+                        <group>
+                            <field name="company_employee_id"/>
+                            <field name="leave_type_code"/>
+                            <field name="file_name" invisible="1"/>
+                            <field name="attachment_required" invisible="1"/>
+                            <field name="attachment" filename="file_name"
+                                   attrs="{'required':[('attachment_required','=',True)]}"/>
+                            <field name="category" invisible="1"/>
+                            <field name="approver_status" invisible="1"/>
+                            <!--                            <field name="approver_user_id"/>-->
+
+                        </group>
+                        <group>
+                            <field name="diagnosis"
+                                   attrs="{'invisible':[('category', '!=', 'sick')]}"/>
+                            <field name="hospital_name"
+                                   attrs="{'invisible': [('category', '!=', 'sick')]}"/>
+                            <field name="all_approved" invisible="1"/>
+                            <field name="reference_no"
+                                   attrs="{'invisible': [('category', '!=', 'sick')]}"/>
+                        </group>
+
+                    </group>
+                    <group>
+
+                        <field name="approvers_ids">
+                            <tree editable="bottom" decoration-succhess="status=='approved'"
+                                  decoration-warning="status=='pending'" decoration-info="status=='to_approve'"
+                                  decoration-danger="status=='refused'">
+                                <field name="sequence" widget="handle"/>
+                                <field name="approver" required="1"/>
+                                <field name="decision_date"/>
+                                <field name="rejection_reason"/>
+                                <field name="status" required="1"/>
+                                <!--                                <field name="approve_tag"/>-->
+                            </tree>
+                        </field>
+                    </group>
+                </xpath>
+                <xpath expr="//button[@name='action_refuse']" position="after">
+                    <button string="Withdraw" name="action_withdraw" type="object"
+                            attrs="{'invisible': [('state', 'in', ['draft','refuse','withdraw'])]}"/>
+                    <button string="Approve Withdraw" name="action_approve_withdraw" type="object"
+                            attrs="{'invisible': [('state', 'not in', ['withdraw'])]}"/>
+                </xpath>
+                <xpath expr="//button[@name='action_approve']" position="replace">
+                    <field name="approver_status" invisible="1"/>
+                    <button string="Approve" name="action_approve" context="{'is_approve_timeoff_approver': True}"
+                            type="object" class="oe_highlight"
+                            attrs="{'invisible': [('approver_status','!=','to_approve')]}"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="hr_leave_view_tree_my_inherit" model="ir.ui.view">
+            <field name="name">hr.holidays.view.inherit.tree</field>
+            <field name="model">hr.leave</field>
+            <field name="inherit_id" ref="hr_holidays.hr_leave_view_tree_my"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree[1]" position="replace">
+                    <tree>
+                        <field name="employee_id"/>
+                        <field name="company_employee_id"/>
+                        <field name="leave_type_code"/>
+                        <field name="reference_no"/>
+                        <field name="hospital_name"/>
+                        <field name="diagnosis"/>
+                        <field name="state"/>
+                        <field name="name"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </tree>
+                </xpath>
+            </field>
+        </record>
+        <record id="hr_holidays.hr_leave_action_action_approve_department" model="ir.actions.act_window">
+            <field name="domain">[('approvers_ids.approver', '=', uid),('state', 'in',['confirm','under_approval'])]
+            </field>
+        </record>
+
+        <record id="time_off_employee_access" model="ir.rule">
+            <field name="name">Time Off employee</field>
+            <field name="model_id" ref="model_hr_leave"/>
+            <field name="domain_force">[('approvers_ids.approver', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('hr_holidays.group_hr_holidays_responsible'))]"/>
+        </record>
+        <record id="time_off_all_access" model="ir.rule">
+            <field name="name">Time Off All</field>
+            <field name="model_id" ref="model_hr_leave"/>
+            <field name="domain_force">[]</field>
+            <field name="groups" eval="[(4, ref('hr_holidays.group_hr_holidays_manager'))]"/>
+        </record>
+    </data>
+</odoo>

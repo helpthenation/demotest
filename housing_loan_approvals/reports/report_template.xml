@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Report Template for the Housing Loan Request -->
+    <template id="report_housing_loan_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="res_company_custom.external_layout_custom">
+                    <div class="page">
+                        <style>
+                            .table_1 {
+                            table-layout: fixed;
+                            }
+                            .table_1 td,.table_1 th {
+                            border: 1px solid #454141;
+                            text-align: left;
+                            padding: 4px;
+                            }
+                            .table_1 th{
+                            width: 250px;
+                            }
+                            .table_1 td p{
+                            width: 99%;
+                            }
+                            .table_2 {
+                            table-layout: fixed;
+                            }
+                            .table_2 td,.table_2 th {
+                            border: 1px solid #454141;
+                            text-align: left;
+                            padding: 4px;
+                            }
+                            .table_2 th{
+                            color: black;
+                            }
+                        </style>
+                        <div style="padding-left: 6%;font-size: 17px;">
+                            <div style="padding-top: 2%;font-size: 22px;">
+                                <b>
+                                    <span>Subject : Housing Loan Request</span>
+                                </b>
+                            </div>
+                            <div style="padding-top: 4%;">
+                                <div>
+                                    <b>
+                                        <span>Request Information Table</span>
+                                    </b>
+                                </div>
+                                <table class="table_1">
+                                    <tr>
+                                        <th>Employee Id</th>
+                                        <td>
+                                            <span t-field="doc.employee_id"/>
+                                        </td>
+                                        <th>Employee Name</th>
+                                        <td>
+                                            <span t-field="doc.e_name.name"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Job Title</th>
+                                        <td>
+                                            <span t-field="doc.job_title_id.name"/>
+                                        </td>
+                                        <th>Grade</th>
+                                        <td>
+                                            <span t-field="doc.grade_id.name"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Date of joining</th>
+                                        <td>
+                                            <p>
+                                                <span t-field="doc.date_of_join"/>
+                                            </p>
+
+                                        </td>
+                                        <th>Department</th>
+                                        <td>
+                                            <span t-field="doc.department_id.name"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Monthly Housing Allowance</th>
+                                        <td>
+                                            <span t-field="doc.monthly_housing_allowance"/>
+                                            <span t-field="doc.currency_id"/>
+                                        </td>
+                                        <th>Yearly Housing Allowance</th>
+                                        <td>
+                                            <span t-field="doc.yearly_housing_allowance"/>
+                                            <span t-field="doc.currency_id"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Loan Amount</th>
+                                        <td>
+                                            <span t-field="doc.loan_amount"/>
+                                            <span t-field="doc.currency_id"/>
+                                        </td>
+
+                                        <th>Loan Deduction Start Month</th>
+                                        <td>
+                                            <span t-field="doc.effective_month_housing"/><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>
+                                            <span t-field="doc.effective_year_housing"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Loan Request Date</th>
+                                        <td>
+                                            <span t-field="doc.create_date"/>
+                                        </td>
+                                        <th>Rental period</th>
+                                        <td>
+                                            <span t-field="doc.rental_period"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Tenancy Contract</th>
+                                        <td>
+                                            <span t-field="doc.tenancy_contract"/>
+                                        </td>
+                                        <th>Rental Amount</th>
+                                        <td>
+                                            <span t-field="doc.rental_amount"/>
+                                            <span t-field="doc.currency_id"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Mode of Payment</th>
+                                        <td>
+                                            <span t-field="doc.mode_of_payment"/>
+
+                                        </td>
+                                    </tr>
+                                    <tr t-if="doc.mode_of_payment == 'Bank Transfer to Salary Account'">
+                                        <th>Current Bank Name</th>
+                                        <td>
+                                            <span t-field="doc.hr_current_bank_name"/>
+
+                                        </td>
+                                    </tr>
+                                    <tr t-if="doc.mode_of_payment == 'Bank Transfer to Salary Account'">
+                                        <th>Current Bank Account No.</th>
+                                        <td>
+                                            <span t-field="doc.hr_current_account_number"/>
+
+                                        </td>
+                                    </tr>
+                                    <tr t-if="doc.mode_of_payment == 'Bank Transfer to Salary Account'">
+                                        <th>Current IBAN</th>
+                                        <td>
+                                            <span t-field="doc.hr_current_iban"/>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Remarks</th>
+                                        <td>
+                                            <span t-esc="doc.remarks"/>
+                                        </td>
+                                    </tr>
+
+
+    <!--                                    <tr>-->
+    <!--                                        <th>Start Date</th>-->
+    <!--                                        <td>-->
+    <!--                                            <span t-field="doc.tenancy_contract_start_date"/>-->
+    <!--                                        </td>-->
+    <!--                                    </tr>-->
+    <!--                                    <tr>-->
+    <!--                                        <th>End Date</th>-->
+    <!--                                        <td>-->
+    <!--                                            <span t-field="doc.tenancy_contract_end_date"/>-->
+    <!--                                        </td>-->
+    <!--                                    </tr>-->
+    <!--                                    <tr>-->
+    <!--                                        <th>Emirate</th>-->
+    <!--                                        <td>-->
+    <!--                                            <span t-field="doc.emirate_id.name"/>-->
+    <!--                                        </td>-->
+    <!--                                    </tr>-->
+    <!--                                    <tr>-->
+    <!--                                        <th>Town</th>-->
+    <!--                                        <td>-->
+    <!--                                            <span t-field="doc.town"/>-->
+    <!--                                        </td>-->
+    <!--                                    </tr>-->
+    <!--                                    <tr>-->
+    <!--                                        <th>Street</th>-->
+    <!--                                        <td>-->
+    <!--                                            <span t-field="doc.street"/>-->
+    <!--                                        </td>-->
+    <!--                                    </tr>-->
+    <!--                                    <tr>-->
+    <!--                                        <th>Building</th>-->
+    <!--                                        <td>-->
+    <!--                                            <span t-field="doc.build_no"/>-->
+    <!--                                        </td>-->
+    <!--                                    </tr>-->
+    <!--                                    <tr>-->
+    <!--                                        <th>Flat/Villa.No</th>-->
+    <!--                                        <td>-->
+    <!--                                            <span t-field="doc.flat_vila_no"/>-->
+    <!--                                        </td>-->
+    <!--                                    </tr>-->
+    <!--                                    <tr>-->
+    <!--                                        <th>Tel.No</th>-->
+    <!--                                        <td>-->
+    <!--                                            <span t-field="doc.tel_no"/>-->
+    <!--                                        </td>-->
+    <!--                                    </tr>-->
+    <!--                                    <tr>-->
+    <!--                                        <th>Mobile.No</th>-->
+    <!--                                        <td>-->
+    <!--                                            <span t-field="doc.mobile_no"/>-->
+    <!--                                        </td>-->
+    <!--                                    </tr>-->
+    <!--                                    &lt;!&ndash;                                    <tr>&ndash;&gt;-->
+                                    <!--                                        <th>Signature</th>-->
+                                    <!--                                        <td>-->
+                                    <!--                                            <t t-set="signature" t-value="'data:image/png;base64,{}'.format(doc.signature)"/>-->
+                                    <!--                                            <img t-att-src="signature" width="170" height="90"/>-->
+                                    <!--                                        </td>-->
+                                    <!--                                    </tr>-->
+                                    <!--                                    <tr>-->
+                                    <!--                                        <th>Date</th>-->
+                                    <!--                                        <td>-->
+                                    <!--                                            <span t-field="doc.sign_date"/>-->
+                                    <!--                                        </td>-->
+                                    <!--                                    </tr>-->
+
+                                </table>
+                            </div>
+                            <div style="padding-top: 4%;">
+                                <div>
+                                    <b>
+                                        <span>Approval Information Table</span>
+                                    </b>
+                                </div>
+                                <table class="table_2">
+                                    <thead>
+                                        <tr>
+                                            <th>Approval ID</th>
+                                            <th>Approval Name</th>
+                                            <th>Approval Status</th>
+                                            <th>Approval Date</th>
+                                            <th>Rejection Reason</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="doc.approver_ids" t-as="approver_line">
+                                            <tr>
+                                                <td>
+                                                    <t t-if="approver_line.user_id.employee_id">
+                                                        <span t-field="approver_line.user_id.employee_id.system_id"/>
+                                                    </t>
+                                                </td>
+
+                                                <td>
+                                                    <t t-if="approver_line.user_id">
+                                                        <span t-field="approver_line.user_id.name"/>
+                                                    </t>
+                                                </td>
+                                                <td>
+                                                    <span t-field="approver_line.status"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="approver_line.approval_date"/>
+                                                </td>
+                                                <td>
+                                                    <p>
+                                                        <span t-field="approver_line.reject_reason"/>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_position_signatures,custom_org_chart.hr_job_signature,model_hr_job_signature,,1,1,1,1
+access_contract_signatures,custom_org_chart.hr_contract_signature,model_hr_contract_signature,,1,1,1,1

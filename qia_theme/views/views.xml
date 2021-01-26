@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="qia_theme.list">
+      <field name="name">qia_theme list</field>
+      <field name="model">qia_theme.qia_theme</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="qia_theme.action_window">
+      <field name="name">qia_theme window</field>
+      <field name="res_model">qia_theme.qia_theme</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="qia_theme.action_server">
+      <field name="name">qia_theme server</field>
+      <field name="model_id" ref="model_qia_theme_qia_theme"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="qia_theme" id="qia_theme.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="qia_theme.menu_1" parent="qia_theme.menu_root"/>
+    <menuitem name="Menu 2" id="qia_theme.menu_2" parent="qia_theme.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="qia_theme.menu_1_list" parent="qia_theme.menu_1"
+              action="qia_theme.action_window"/>
+    <menuitem name="Server to list" id="qia_theme" parent="qia_theme.menu_2"
+              action="qia_theme.action_server"/>
+    -->
+  </data>
+</odoo>

@@ -1,0 +1,305 @@
+<odoo>
+    <record id="approval_request_view_form_housing_loan_approve" model="ir.ui.view">
+        <field name="name">approval.request.view.housing.loan.form</field>
+        <field name="model">approval.request</field>
+        <field name="inherit_id" ref="approvals.approval_request_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//sheet/group" position="after">
+                <field name="has_e_name" invisible="1"/>
+                <field name="has_employee_id" invisible="1"/>
+                <field name="has_job_title_id" invisible="1"/>
+                <field name="has_department_id" invisible="1"/>
+                <field name="has_grade_id" invisible="1"/>
+                <field name="has_date_of_join" invisible="1"/>
+                <field name="has_monthly_housing_allowance" invisible="1"/>
+                <field name="has_yearly_housing_allowance" invisible="1"/>
+                <field name="has_loan_amount" invisible="1"/>
+                <field name="has_mode_of_payment" invisible="1"/>
+                <field name="has_remarks" invisible="1"/>
+                <field name="has_currency_id" invisible="1"/>
+                <field name="has_rental_period" invisible="1"/>
+                <field name="has_tenancy_contract" invisible="1"/>
+                <field name="has_rental_amount" invisible="1"/>
+                <field name="has_tenancy_contract_start_date" invisible="1"/>
+                <field name="has_tenancy_contract_end_date" invisible="1"/>
+                <field name="has_emirate_id" invisible="1"/>
+                <field name="has_town" invisible="1"/>
+                <field name="has_street" invisible="1"/>
+                <field name="has_build_no" invisible="1"/>
+                <field name="has_flat_vila_no" invisible="1"/>
+                <field name="has_tel_no" invisible="1"/>
+                <field name="has_mobile_no" invisible="1"/>
+                <!--                <field name="has_signature" invisible="1"/>-->
+                <!--                <field name="has_sign_date" invisible="1"/>-->
+                <field name="has_utility_bill" invisible="1"/>
+                <field name="has_tenancy_contract_file" invisible="1"/>
+                <field name="has_security_cheque" invisible="1"/>
+                <field name="is_housing_loan_request" invisible="1"/>
+                <field name="housing_loan_request" invisible="1"/>
+                <field name="can_create_housing_loan" invisible="1"/>
+                <field name="has_housing_effective_month_year" invisible="1"/>
+
+                <div class="oe_title"
+                     attrs="{'invisible':[('has_e_name','==','no')], 'required': [('has_e_name','==','required')]} ">
+                    <h2>
+                        <field name="e_name" style="width: 100%"
+                               options="{'no_create': True, 'no_create_edit':True, 'no_quick_create':True, 'no_open': True}"
+                               attrs="{'invisible':[('has_e_name','==','no')], 'readonly':[('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('has_e_name','==','required')]}"/>
+                    </h2>
+                </div>
+                <group>
+                    <group>
+                        <field name="employee_id"
+                               attrs="{'invisible':[('has_employee_id','==','no')], 'required': [('has_employee_id','==','required')]}"/>
+                        <field name="job_title_id" options="{'no_open': True}"
+                               attrs="{'invisible':[('has_job_title_id','==','no')], 'required': [('has_job_title_id','==','required')]}"/>
+                        <field name="department_id" options="{'no_open': True}"
+                               attrs="{'invisible':[('has_department_id','==','no')], 'required': [('has_department_id','==','required')]}"/>
+                    </group>
+
+                    <group>
+                        <field name="currency_id" invisible="1"/>
+                        <field name="grade_id" options="{'no_open': True}"
+                               attrs="{'invisible':[('has_grade_id','==','no')], 'required': [('has_grade_id','==','required')]}"/>
+                        <field name="date_of_join"
+                               attrs="{'invisible':[('has_date_of_join','==','no')], 'required': [('has_date_of_join','==','required')]}"/>
+                        <field name="monthly_housing_allowance" widget='monetary' force_save="1"
+                               options="{'currency_field': 'currency_id'}" readonly="True"
+                               attrs="{'invisible':[('has_monthly_housing_allowance','==','no')], 'required': [('has_monthly_housing_allowance','==','required')]}"/>
+                        <field name="yearly_housing_allowance" widget='monetary' force_save="1"
+                               options="{'currency_field': 'currency_id'}" readonly="True"
+                               attrs="{'invisible':[('has_yearly_housing_allowance','==','no')], 'required': [('has_yearly_housing_allowance','==','required')]}"/>
+                    </group>
+
+                    <group>
+                        <!--                        <div style="color:red ! important;" string="Attachments"-->
+                        <!--                             attrs="{'invisible':['|',('is_housing_loan_request','=','no'),('request_status','!=','new')]}">-->
+                        <!--                            <span>-->
+                        <!--                                -->
+                        <!--                            </span>-->
+                        <!--                        </div>-->
+                        <field name="security_filename" invisible="1"/>
+                        <field name="utility_filename" invisible="1"/>
+                        <field name="tenancy_filename" invisible="1"/>
+                        <field name="utility_bill" filename="utility_filename"
+                               attrs="{'invisible':[('has_utility_bill','==','no')],'readonly':[('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('has_utility_bill','==','required')]}"/>
+                        <field name="tenancy_contract_file" filename="tenancy_filename"
+                               attrs="{'invisible':[('has_tenancy_contract_file','==','no')],'readonly':[('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('has_tenancy_contract_file','==','required')]}"/>
+                        <field name="security_cheque" filename="security_filename"
+                               attrs="{'invisible':[('has_security_cheque','==','no')],'readonly':[('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('has_security_cheque','==','required')]}"/>
+                        <div style="color:red ! important;"
+                             attrs="{'invisible':[('is_housing_loan_request','=','no')]}">
+                            <span>
+                                Note: kindly submit a hard copy of your documents to HC department along with the
+                                original security cheque.
+                            </span>
+                        </div>
+                    </group>
+                    <group>
+                        <label for="has_housing_effective_month_year"
+                               attrs="{'invisible':[('has_housing_effective_month_year','==','no')]}"/>
+                        <div attrs="{'invisible':[('has_housing_effective_month_year','==','no')],'readonly':[('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('has_housing_effective_month_year','==','required')]}">
+                            <field name="effective_month_housing" class="oe_inline"
+                                   attrs="{'readonly':[('request_status','in',['pending','under_approval','approved','refused'])]}"/>
+                            <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>
+                            <field name="effective_year_housing" class="oe_inline"
+                                   attrs="{'readonly':[('request_status','in',['pending','under_approval','approved','refused'])]}"/>
+                        </div>
+                    </group>
+                </group>
+            </xpath>
+            <button name="action_withdraw" position="attributes">
+                <attribute name="groups">security_groups.group_company_hc</attribute>
+            </button>
+            <button name="action_cancel" position="attributes">
+                <attribute name="groups">security_groups.group_company_hc</attribute>
+            </button>
+
+            <xpath expr="//button[@name='action_confirm']" position="after">
+                <button name="create_repayment" string="Compute Repayment Plan" type="object" class="btn-primary"
+                        attrs="{'invisible':['|',('request_status','not in',['new']),('is_housing_loan_request','=','no')]}"/>
+                <button name="action_print_housing_loan_report" string="Request PDF" type="object"
+                        attrs="{'invisible':['|',('is_housing_loan_request','=','no'),('request_status','not in',['pending','under_approval','approved','refused'])]}"/>
+            </xpath>
+            <xpath expr="//page[@name='description']" position="before">
+
+                <page string="Payment" name="housing_loan_payment"
+                      attrs="{'invisible':[('is_housing_loan_request','==','no')]}">
+                    <group string="Payment">
+                        <group>
+                            <field name="loan_amount" widget='monetary'
+                                   options="{'currency_field': 'currency_id'}" readonly="False"
+                                   attrs="{'invisible':[('has_loan_amount','==','no')],'readonly':[('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('has_loan_amount','==','required')]}"/>
+                            <field name="mode_of_payment"
+                                   attrs="{'invisible':[('has_mode_of_payment','=','no')],'readonly':[('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('has_mode_of_payment','=','required')]}"/>
+
+                            <field name="hr_current_account_number" force_save="1"
+                                   attrs="{'invisible':[('mode_of_payment','!=','Bank Transfer to Salary Account')]}"/>
+                            <field name="hr_current_bank_name" force_save="1"
+                                   options="{'no_create': True, 'no_open': True,'no_edit': True}"
+                                   attrs="{'invisible':[('mode_of_payment','!=','Bank Transfer to Salary Account')]}"/>
+                            <field name="hr_current_iban" force_save="1"
+                                   attrs="{'invisible':[('mode_of_payment','!=','Bank Transfer to Salary Account')]}"/>
+                            <field name="remarks"
+                                   attrs="{'invisible':[('has_remarks','==','no')],'readonly':[('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('has_remarks','==','required')]}"/>
+                        </group>
+                        <group>
+                            <field name="rental_period" widget="radio"
+                                   attrs="{'invisible':[('has_rental_period','==','no')],'readonly':[('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('has_rental_period','==','required')]}"/>
+                        </group>
+                    </group>
+                    <group string="Tenancy Contract"
+                           attrs="{'invisible':[('has_tenancy_contract','==','no'),('has_rental_amount','==','no'),('has_tenancy_contract_start_date','==','no'),('has_tenancy_contract_end_date','==','no'),('has_emirate_id','==','no'),('has_town','==','no'),('has_street','==','no'),('has_build_no','==','no'),('has_flat_vila_no','==','no'),('has_mobile_no','==','no')], 'required': [('has_tenancy_contract','==','required')]}">
+                        <group>
+                            <field name="tenancy_contract"
+                                   attrs="{'invisible':[('has_tenancy_contract','==','no')],'readonly':[('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('has_tenancy_contract','==','required')]}"/>
+                            <field name="rental_amount" widget='monetary'
+                                   options="{'currency_field': 'currency_id'}" readonly="False"
+                                   attrs="{'invisible':[('has_rental_amount','==','no')],'readonly':[('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('has_rental_amount','==','required')]}"/>
+
+                        </group>
+                        <group string="Tenancy Period"
+                               attrs="{'invisible':[('has_tenancy_contract_start_date','==','no'),('has_tenancy_contract_end_date','==','no')],'readonly':[('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('has_tenancy_contract_start_date','==','required')]}">
+                            <field name="tenancy_contract_start_date"
+                                   attrs="{'invisible':[('has_tenancy_contract_start_date','==','no')],'readonly':[('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('has_tenancy_contract_start_date','==','required')]}"/>
+                            <field name="tenancy_contract_end_date"
+                                   attrs="{'invisible':[('has_tenancy_contract_end_date','==','no')],'readonly':[('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('has_tenancy_contract_end_date','==','required')]}"/>
+                        </group>
+                    </group>
+                    <group string="Address in UAE"
+                           attrs="{'invisible':[('has_emirate_id','==','no'),('has_town','==','no'),('has_street','==','no'),('has_build_no','==','no'),('has_flat_vila_no','==','no'),('has_mobile_no','==','no')], 'required': [('has_emirate_id','==','required')]}">
+                        <group>
+                            <field name="emirate_id"
+                                   options="{'no_open': True, 'no_create': True, 'no_create_edit':True}"
+                                   attrs="{'invisible':[('has_emirate_id','==','no')],'readonly':[('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('has_emirate_id','==','required')]}"/>
+                            <field name="town"
+                                   attrs="{'invisible':[('has_town','==','no')],'readonly':[('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('has_town','==','required')]}"/>
+                            <field name="street"
+                                   attrs="{'invisible':[('has_street','==','no')],'readonly':[('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('has_street','==','required')]}"/>
+                            <field name="flat_vila_no"
+                                   attrs="{'invisible':[('has_flat_vila_no','==','no')],'readonly':[('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('has_flat_vila_no','==','required')]}"/>
+                        </group>
+                        <group>
+                            <field name="build_no"
+                                   attrs="{'invisible':[('has_build_no','==','no')],'readonly':[('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('has_build_no','==','required')]}"/>
+                            <field name="tel_no"
+                                   attrs="{'invisible':[('has_tel_no','==','no')],'readonly':[('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('has_tel_no','==','required')]}"/>
+                            <field name="mobile_no"
+                                   attrs="{'invisible':[('has_mobile_no','==','no')],'readonly':[('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('has_mobile_no','==','required')]}"/>
+                        </group>
+                    </group>
+                    <div attrs="{'invisible':['|',('is_housing_loan_request','==','no'),('request_status','in',['pending','under_approval','approved','refused'])]}">
+                        <field name="agree_check" class="oe_inline"
+                               attrs="{'invisible':['|',('is_housing_loan_request','==','no'),('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('is_housing_loan_request','==','yes')]}"/>
+                        <![CDATA[ I hereby agree and undertake to settle the loan on housing loan allowance in full regardless of circumstances, including but not limited to the following.<br />
+
+                                                            * Should I resign or be terminated at any time prior to the full settlement of the loan
+                                                    I hereby authorize the company to deduction any outstanding balance in terms of housing loan,
+                                                    from my dues with the company.]]>
+                        <br/>
+                    </div>
+                    <!--                                        <group>-->
+                    <!--                        <group>-->
+                    <!--                            <field name="signature" widget="signature"-->
+                    <!--                                   attrs="{'invisible':[('has_signature','==','no')], 'required': [('has_signature','==','required')]}"/>-->
+                    <!--                        </group>-->
+                    <!--                        <group>-->
+                    <!--                            <field name="sign_date"-->
+                    <!--                                   attrs="{'invisible':[('has_sign_date','==','no')], 'required': [('has_sign_date','==','required')]}"/>-->
+                    <!--                        </group>-->
+                    <!--                    </group>-->
+
+                </page>
+
+                <page string="Previous History" name="housing_loan_previous_history"
+                      attrs="{'invisible':[('is_housing_loan_request','==','no')]}">
+                    <field name="previous_history_ids">
+                        <tree edit="0" delete="0" create="0">
+                            <field name="employee_name"/>
+                            <field name="employee_id"/>
+                            <field name="department_id" optional="show"/>
+                            <field name="date_of_join" optional="show"/>
+                            <field name="job_title_id" optional="show"/>
+                            <field name="grade_id" optional="show"/>
+                            <field name="monthly_housing_allowance"/>
+                            <field name="yearly_housing_allowance"/>
+                            <field name="loan_amount"/>
+                            <field name="mode_of_payment"/>
+                        </tree>
+                    </field>
+                </page>
+                <page string="Repayment Plan" name="housing_loan_repayment"
+                      attrs="{'invisible':[('is_housing_loan_request','==','no')]}">
+                    <field name="agree_repayment_plan"
+                           attrs="{'invisible':['|',('is_housing_loan_request','==','no'),('request_status','in',['pending','under_approval','approved','refused'])], 'required': [('is_housing_loan_request','==','yes')]}"/>
+                    <![CDATA[&nbsp;]]>Confirm the repayment plan
+                    <field name="payment_plans_ids" readonly="1">
+                        <tree editable="0" create="0" delete="0">
+                            <field name="pay_year"/>
+                            <field name="pay_month"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="loan_balance"/>
+                            <field name="payment"/>
+                            <field name="loan_repayment"/>
+                            <field name="reg_repayment"/>
+                        </tree>
+                    </field>
+                </page>
+
+            </xpath>
+        </field>
+    </record>
+
+    <record id="approval_category_view_form_housing_loan" model="ir.ui.view">
+        <field name="name">approval.category.view.form</field>
+        <field name="model">approval.category</field>
+        <field name="inherit_id" ref="approvals.approval_category_view_form"/>
+        <field name="arch" type="xml">
+            <!--                <xpath expr="//field[@name='is_internal_transfer_request']" position="after">-->
+            <!--                    <field name="is_housing_loan_request" widget="radio" options="{'horizontal': true}"/>-->
+            <!--                </xpath>-->
+            <xpath expr="//page[@name='transfer_fields']" position="after">
+                <page string="Housing Loan" name="housing_loan">
+                    <label for="is_housing_loan_request"/>
+                    <field name="is_housing_loan_request" widget="radio" options="{'horizontal': true}"/>
+                    <h3 style="text-decoration: underline;" colspan="2">Fields</h3>
+                    <group>
+                        <field name="has_e_name" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_employee_id" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_job_title_id" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_department_id" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_grade_id" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_date_of_join" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_monthly_housing_allowance" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_yearly_housing_allowance" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_housing_effective_month_year" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_loan_amount" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_mode_of_payment" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_remarks" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_currency_id" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_rental_period" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_tenancy_contract" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_rental_amount" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_tenancy_contract_start_date" widget="radio"
+                               options="{'horizontal': true}"/>
+                        <field name="has_tenancy_contract_end_date" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_emirate_id" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_town" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_street" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_build_no" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_flat_vila_no" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_tel_no" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_mobile_no" widget="radio" options="{'horizontal': true}"/>
+                        <!--                        <field name="has_signature" widget="radio" options="{'horizontal': true}"/>-->
+                        <!--                        <field name="has_sign_date" widget="radio" options="{'horizontal': true}"/>-->
+                        <field name="has_utility_bill" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_tenancy_contract_file" widget="radio" options="{'horizontal': true}"/>
+                        <field name="has_security_cheque" widget="radio" options="{'horizontal': true}"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
